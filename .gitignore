@@ -12,5 +12,6 @@ obj/
 *.userosscache
 *.sln.DotSettings.user
 
-# StS2 Specifics (VERY IMPORTANT)
+# StS2 Specifics
 Sts2PathDiscovery.props
+/Directory.Build.props
