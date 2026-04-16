@@ -1,6 +1,16 @@
+# Godot-specific
+.godot/
+*.translation
+*.tscn.converted
+*.res.converted
+
+# C# / .NET / Rider
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
-/.idea/
+.idea/
+*.user
+*.userosscache
+*.sln.DotSettings.user
+
+# StS2 Specifics (VERY IMPORTANT)
+Sts2PathDiscovery.props
