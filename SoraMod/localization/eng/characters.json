@@ -1,0 +1,16 @@
+{
+  "SORAMOD-SORA_MOD.aromaPrinciple": "Lore",
+  "SORAMOD-SORA_MOD.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "SORAMOD-SORA_MOD.banter.dead.endTurnPing": "...",
+  "SORAMOD-SORA_MOD.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "SORAMOD-SORA_MOD.cardsModifierTitle": "__ Cards",
+  "SORAMOD-SORA_MOD.description": "Character Selection\nScreen Description",
+  "SORAMOD-SORA_MOD.eventDeathPrevention": "Co-op survival line",
+  "SORAMOD-SORA_MOD.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "SORAMOD-SORA_MOD.possessiveAdjective": "his/her/its",
+  "SORAMOD-SORA_MOD.pronounObject": "him/her/it",
+  "SORAMOD-SORA_MOD.pronounPossessive": "his/hers/its",
+  "SORAMOD-SORA_MOD.pronounSubject": "he/she/it",
+  "SORAMOD-SORA_MOD.title": "The SoraMod",
+  "SORAMOD-SORA_MOD.titleObject": "The SoraMod"
+}
