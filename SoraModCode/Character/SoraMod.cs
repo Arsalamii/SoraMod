@@ -6,13 +6,14 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using SoraMod.SoraModCode.Cards.Basic;
 
 namespace SoraMod.SoraModCode.Character;
 
 public class SoraMod : PlaceholderCharacterModel
 {
     public const string CharacterId = "SoraMod";
-
+    
     public static readonly Color Color = new("ffffff");
 
     public override Color NameColor => Color;
@@ -21,16 +22,16 @@ public class SoraMod : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<GuardSoraMod>(),
+        ModelDb.Card<GuardSoraMod>(),
+        ModelDb.Card<GuardSoraMod>(),
+        ModelDb.Card<GuardSoraMod>(),
+        ModelDb.Card<FireSoraMod>(),
+        ModelDb.Card<DodgeRollSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

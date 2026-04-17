@@ -1,3 +1,10 @@
 {
-  
+  "SORAMOD-STRIKE_SORA_MOD.description": "Deal {Damage:diff()} Damage.",
+  "SORAMOD-STRIKE_SORA_MOD.title": "Strike",
+  "SORAMOD-GUARD_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "SORAMOD-GUARD_SORA_MOD.title": "Guard",
+  "SORAMOD-FIRE_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL Enemies.",
+  "SORAMOD-FIRE_SORA_MOD.title": "Fire",
+  "SORAMOD-DODGE_ROLL_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold]\nGain {Block:diff()} Block at the start of your next turn.",
+  "SORAMOD-DODGE_ROLL_SORA_MOD.title": "Dodge Roll"
 }
