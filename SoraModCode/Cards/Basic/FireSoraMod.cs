@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using SoraMod.SoraModCode.Cards;
 
 namespace SoraMod.SoraModCode.Cards.Basic;
 
@@ -11,7 +10,7 @@ public class FireSoraMod() : SoraModCard(2, CardType.Attack, CardRarity.Basic, T
 {
     protected override HashSet<CardTag> CanonicalTags
     {
-        get => new HashSet<CardTag>() { CardTag.Strike };
+        get => new HashSet<CardTag> { CardTag.Strike };
     }
     
     protected override IEnumerable<DynamicVar> CanonicalVars
@@ -19,7 +18,7 @@ public class FireSoraMod() : SoraModCard(2, CardType.Attack, CardRarity.Basic, T
         get => new List<DynamicVar> { new DamageVar(4m, ValueProp.Move) };
     }
     
-    protected override async Task OnPlay(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext choiceContext, CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
     }

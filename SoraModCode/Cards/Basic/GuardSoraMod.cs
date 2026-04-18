@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using SoraMod.SoraModCode.Cards;
 
 namespace SoraMod.SoraModCode.Cards.Basic;
 
@@ -17,7 +16,7 @@ public class GuardSoraMod : SoraModCard
     
     protected override HashSet<CardTag> CanonicalTags
     {
-        get => new HashSet<CardTag>() { CardTag.Defend };
+        get => new HashSet<CardTag> { CardTag.Defend };
     }
     
     protected override IEnumerable<DynamicVar> CanonicalVars

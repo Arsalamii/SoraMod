@@ -13,5 +13,4 @@ obj/
 *.sln.DotSettings.user
 
 # StS2 Specifics
-Sts2PathDiscovery.props
 /Directory.Build.props

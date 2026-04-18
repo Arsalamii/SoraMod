@@ -1,6 +1,6 @@
 ﻿using BaseLib.Abstracts;
-using SoraMod.SoraModCode.Extensions;
 using Godot;
+using SoraMod.SoraModCode.Extensions;
 
 namespace SoraMod.SoraModCode.Character;
 

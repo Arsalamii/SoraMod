@@ -5,6 +5,16 @@
   "SORAMOD-GUARD_SORA_MOD.title": "Guard",
   "SORAMOD-FIRE_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL Enemies.",
   "SORAMOD-FIRE_SORA_MOD.title": "Fire",
-  "SORAMOD-DODGE_ROLL_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold]\nGain {Block:diff()} Block at the start of your next turn.",
-  "SORAMOD-DODGE_ROLL_SORA_MOD.title": "Dodge Roll"
+  "SORAMOD-DODGE_ROLL_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold]\nGain {Block:diff()} [gold]Block[/gold] at the start of your next turn.",
+  "SORAMOD-DODGE_ROLL_SORA_MOD.title": "Dodge Roll",
+  "SORAMOD-FLASH_STEP_SORA_MOD.description": "Deal {Damage:diff()} Damage.\nGain {Block:diff()} [gold]Block[/gold]",
+  "SORAMOD-FLASH_STEP_SORA_MOD.title": "Flash Step",
+  "SORAMOD-SLAPSHOT_SORA_MOD.description": "Deal {Damage:diff()} Damage 3 times.",
+  "SORAMOD-SLAPSHOT_SORA_MOD.title": "Slapshot",
+  "SORAMOD-MAGNET_SPLASH_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL enemies.",
+  "SORAMOD-MAGNET_SPLASH_SORA_MOD.title": "Magnet Splash",
+  "SORAMOD-REVERT_SORA_MOD.description": "Revert to Base Form",
+  "SORAMOD-REVERT_SORA_MOD.title": "Revert",
+  "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nKeyblade Cards Deal +2 Damage.\nThe First Attack Played Costs 2 Less Energy.\nRequires 3 Drive Gauge.",
+  "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form"
 }

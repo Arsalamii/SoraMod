@@ -3,7 +3,6 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Extensions;
-using Godot;
 
 namespace SoraMod.SoraModCode.Relics;
 

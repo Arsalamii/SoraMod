@@ -1,9 +1,9 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Extensions;
-using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace SoraMod.SoraModCode.Cards;
 

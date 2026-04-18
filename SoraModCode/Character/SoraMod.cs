@@ -1,12 +1,13 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
-using SoraMod.SoraModCode.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
 using SoraMod.SoraModCode.Cards.Basic;
+using SoraMod.SoraModCode.Cards.Common;
+using SoraMod.SoraModCode.Extensions;
+using SoraMod.SoraModCode.Relics;
 
 namespace SoraMod.SoraModCode.Character;
 
@@ -19,6 +20,7 @@ public class SoraMod : PlaceholderCharacterModel
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 100;
+    public override bool ShouldAlwaysShowStarCounter => true;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
@@ -31,12 +33,13 @@ public class SoraMod : PlaceholderCharacterModel
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<DodgeRollSoraMod>()
+        ModelDb.Card<DodgeRollSoraMod>(),
+        ModelDb.Card<ValorFormSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<CrownPendant>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<SoraModCardPool>();

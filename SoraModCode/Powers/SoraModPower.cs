@@ -1,7 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using SoraMod.SoraModCode.Extensions;
-using Godot;
 
 namespace SoraMod.SoraModCode.Powers;
 

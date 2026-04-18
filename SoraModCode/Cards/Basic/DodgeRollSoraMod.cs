@@ -1,13 +1,9 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
-using SoraMod.SoraModCode.Cards;
 
 namespace SoraMod.SoraModCode.Cards.Basic;
 
@@ -16,7 +12,7 @@ public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Basi
 
     protected override HashSet<CardTag> CanonicalTags
     {
-        get => new HashSet<CardTag>() { CardTag.Defend };
+        get => new HashSet<CardTag> { CardTag.Defend };
     }
 
     public override bool GainsBlock => true;
@@ -30,8 +26,8 @@ public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Basi
     {
         DodgeRollSoraMod cardSource = this;
         Decimal amount = await CreatureCmd.GainBlock(cardSource.Owner.Creature, cardSource.DynamicVars.Block, cardPlay);
-        BlockNextTurnPower blockNextTurnPower = await PowerCmd.Apply<BlockNextTurnPower>(cardSource.Owner.Creature, amount, cardSource.Owner.Creature, (CardModel) cardSource);
+        BlockNextTurnPower blockNextTurnPower = await PowerCmd.Apply<BlockNextTurnPower>(cardSource.Owner.Creature, amount, cardSource.Owner.Creature, cardSource) ?? throw new InvalidOperationException();
     }
     
-    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(2M);
+    protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(2M);
 }
