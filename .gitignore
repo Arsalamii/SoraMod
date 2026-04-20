@@ -14,3 +14,6 @@ obj/
 
 # StS2 Specifics
 /Directory.Build.props
+
+# User Created
+KnownBugs.txt

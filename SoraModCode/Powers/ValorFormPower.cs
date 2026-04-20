@@ -18,21 +18,23 @@ public class ValorFormPower : SoraModPower
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        await UpdateKeybladeDamage();
+        UpdateKeybladeDamage();
         UpdateFirstAttackCost();
     }
 
-    public void OnCardDrawn(CardModel card)
+    public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
         UpdateFirstAttackCost();
+        return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }
 
-    public void OnCardPlayed(CardModel card)
+    public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (card.Type == CardType.Attack)
+        if (cardPlay.Card.Type == CardType.Attack)
         {
             ResetAttackCosts();
         }
+        return base.AfterCardPlayed(context, cardPlay);
     }
 
     private void UpdateFirstAttackCost()
@@ -65,16 +67,16 @@ public class ValorFormPower : SoraModPower
         }
     }
 
-    private async Task UpdateKeybladeDamage()
+    private void UpdateKeybladeDamage()
     {
-        CardPile hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
-        if (hand == null) return;
-
-        foreach (CardModel card in hand.Cards)
+        if (this.Owner.Player?.PlayerCombatState != null)
         {
-            if (card.Tags.Contains(SoraModEnums.Keyblade))
+            foreach (CardModel card in this.Owner.Player.PlayerCombatState.AllCards)
             {
-                card.DynamicVars.Damage.EnchantedValue += 2;
+                if (card.Tags.Contains(SoraModEnums.Keyblade))
+                {
+                    card.DynamicVars.Damage.BaseValue += 2;
+                }
             }
         }
     }
@@ -106,36 +108,25 @@ public class ValorFormPower : SoraModPower
     {
         if (oldOwner.Player?.PlayerCombatState != null)
         {
-            // 1. STRIP THE DAMAGE BUFF
-            // We check ALL cards (deck, discard, hand) to ensure nothing keeps the buff
-            foreach (CardModel card in oldOwner.Player.PlayerCombatState.AllCards)
+            // Loop through EVERY card the player owns in combat (Hand, Draw, Discard, Exhaust!)
+            foreach (CardModel card in oldOwner.Player.PlayerCombatState.AllCards.ToList())
             {
+                // 1. Strip the damage buff
                 if (card.Tags.Contains(SoraModEnums.Keyblade))
                 {
-                    card.DynamicVars.Damage.EnchantedValue -= 2;
+                    card.DynamicVars.Damage.BaseValue -= 2;
                 }
-            }
 
-            // 2. CLEAN UP THE HAND (Revert Card & Attack Costs)
-            CardPile hand = oldOwner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
-            
-            if (hand != null)
-            {
-                // We add .ToList() here so we don't crash when we remove Revert from the hand!
-                foreach (CardModel card in hand.Cards.ToList())
+                // 2. Reset lingering attack costs
+                if (card.Type == CardType.Attack)
                 {
-                    // Reset any lingering first-attack cost discounts
-                    if (card.Type == CardType.Attack)
-                    {
-                        // Using the Canonical workaround we set up earlier!
-                        card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
-                    }
+                    card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
+                }
 
-                    // Look for the Revert card and get rid of it
-                    if (card is RevertSoraMod)
-                    {
-                        await CardPileCmd.RemoveFromCombat(card, false);
-                    }
+                // 3. Nuke Revert from orbit!
+                if (card is RevertSoraMod)
+                {
+                    await CardPileCmd.RemoveFromCombat(card, false);
                 }
             }
         }
