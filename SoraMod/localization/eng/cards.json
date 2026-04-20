@@ -16,5 +16,15 @@
   "SORAMOD-REVERT_SORA_MOD.description": "Revert to Base Form",
   "SORAMOD-REVERT_SORA_MOD.title": "Revert",
   "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nKeyblade Cards Deal +2 Damage.\nThe First Attack Played Costs 2 Less Energy.\nRequires 3 Drive Gauge.",
-  "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form"
+  "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form",
+  "SORAMOD-DRIVE_RECOVERY_SORA_MOD.description": "Gain 3 Drive.",
+  "SORAMOD-DRIVE_RECOVERY_SORA_MOD.title": "Drive Recovery",
+  "SORAMOD-TENSION_RISING_SORA_MOD.description": "Damage is equal to your Drive.\nGain {Stars:diff()} Drive.",
+  "SORAMOD-TENSION_RISING_SORA_MOD.title": "Tension Rising",
+  "SORAMOD-TRINITY_LIMIT_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL enemies.\nIf you have 3 or more Drive, consume 3 Drive to play this card a second time.",
+  "SORAMOD-TRINITY_LIMIT_SORA_MOD.title": "Trinity Limit",
+  "SORAMOD-REACTION_COMMAND_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].\nThe next time you are attacked this turn, deal damage to the attacker equal to the [gold]Block[/gold] you lose.",
+  "SORAMOD-REACTION_COMMAND_SORA_MOD.title": "Reaction Command",
+  "SORAMOD-RAGNAROK_SORA_MOD.description": "Deal {Damage:diff()} Damage to a random enemy X times.\nFire 1 additional time for every Drive you have.",
+  "SORAMOD-RAGNAROK_SORA_MOD.title": "Ragnarok"
 }

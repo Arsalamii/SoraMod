@@ -1,5 +1,8 @@
 {
   "SORAMOD-VALOR_FORM_POWER.description": "Form Changed to Valor Form!",
   "SORAMOD-VALOR_FORM_POWER.smartDescription": "Valor Form",
-  "SORAMOD-VALOR_FORM_POWER.title": "Valor Form"
+  "SORAMOD-VALOR_FORM_POWER.title": "Valor Form",
+  "SORAMOD-REACTION_COMMAND_POWER.description": "",
+  "SORAMOD-REACTION_COMMAND_POWER.smartDescription": "",
+  "SORAMOD-REACTION_COMMAND_POWER.title": "ReactionCommandPower"
 }

@@ -33,8 +33,7 @@ public class SoraMod : PlaceholderCharacterModel
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<DodgeRollSoraMod>(),
-        ModelDb.Card<ValorFormSoraMod>()
+        ModelDb.Card<DodgeRollSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

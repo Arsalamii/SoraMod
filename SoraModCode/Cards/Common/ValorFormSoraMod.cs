@@ -4,14 +4,12 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using SoraMod.SoraModCode.Cards;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers;
 
 namespace SoraMod.SoraModCode.Cards.Common;
 
-  
 [Pool(typeof(SoraModCardPool))]
 public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
@@ -23,7 +21,6 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Comm
             {
                 return this.Owner.PlayerCombatState.Stars >= 3;
             }
-
             return false;
         }
     }
@@ -37,8 +34,7 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Comm
     {
         ValorFormSoraMod card = this;
 
-        // 1. APPLY THE VALOR FORM BUFF TO SORA
-        // Even though this is a Skill card, we use PowerCmd to apply the ongoing status effect!
+        // APPLY THE VALOR FORM BUFF TO SORA
         await PowerCmd.Apply<ValorFormPower>(
             card.Owner.Creature,
             card.DynamicVars["ValorFormPower"].BaseValue,
@@ -46,12 +42,19 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Comm
             card
         );
 
-        CardModel revertCard = ModelDb.Card<RevertSoraMod>();
-        await CardPileCmd.Add(revertCard, PileType.Hand);
+        // CREATE THE REVERT CARD INSTANCE
+        CardModel revertCard = card.CombatState.CreateCard<RevertSoraMod>(card.Owner);
+
+        // 3. SPAWN IT INTO THE HAND
+        await CardPileCmd.AddGeneratedCardsToCombat(
+            new List<CardModel> { revertCard }, 
+            PileType.Hand, 
+            true
+        );
     }
 
     protected override void OnUpgrade()
     {
-
+        // Add upgrade logic if needed!
     }
 }

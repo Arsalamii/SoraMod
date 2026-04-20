@@ -1,13 +1,16 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using SoraMod.SoraModCode.Character;
 
-namespace SoraMod.SoraModCode.Cards.Basic;
+namespace SoraMod.SoraModCode.Cards.Common;
 
-public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+[Pool(typeof(SoraModCardPool))]
+public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
 
     protected override HashSet<CardTag> CanonicalTags

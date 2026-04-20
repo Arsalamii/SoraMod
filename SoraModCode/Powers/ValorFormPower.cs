@@ -1,11 +1,12 @@
-﻿using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Combat;
+﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Enums;
 
 namespace SoraMod.SoraModCode.Powers;
@@ -73,7 +74,7 @@ public class ValorFormPower : SoraModPower
         {
             if (card.Tags.Contains(SoraModEnums.Keyblade))
             {
-                card.DynamicVars.Damage.BaseValue += 2;
+                card.DynamicVars.Damage.EnchantedValue += 2;
             }
         }
     }
@@ -98,6 +99,45 @@ public class ValorFormPower : SoraModPower
         {
             return CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Any(e =>
                 e.HappenedThisTurn(this.CombatState) && e.CardPlay.Card.Owner.Creature == this.Owner && e.CardPlay.Card.Type == CardType.Attack);
+        }
+    }
+    
+    public override async Task AfterRemoved(Creature oldOwner)
+    {
+        if (oldOwner.Player?.PlayerCombatState != null)
+        {
+            // 1. STRIP THE DAMAGE BUFF
+            // We check ALL cards (deck, discard, hand) to ensure nothing keeps the buff
+            foreach (CardModel card in oldOwner.Player.PlayerCombatState.AllCards)
+            {
+                if (card.Tags.Contains(SoraModEnums.Keyblade))
+                {
+                    card.DynamicVars.Damage.EnchantedValue -= 2;
+                }
+            }
+
+            // 2. CLEAN UP THE HAND (Revert Card & Attack Costs)
+            CardPile hand = oldOwner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
+            
+            if (hand != null)
+            {
+                // We add .ToList() here so we don't crash when we remove Revert from the hand!
+                foreach (CardModel card in hand.Cards.ToList())
+                {
+                    // Reset any lingering first-attack cost discounts
+                    if (card.Type == CardType.Attack)
+                    {
+                        // Using the Canonical workaround we set up earlier!
+                        card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
+                    }
+
+                    // Look for the Revert card and get rid of it
+                    if (card is RevertSoraMod)
+                    {
+                        await CardPileCmd.RemoveFromCombat(card, false);
+                    }
+                }
+            }
         }
     }
 }
