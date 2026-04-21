@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
 using SoraMod.SoraModCode.Cards.Basic;
 using SoraMod.SoraModCode.Cards.Common;
+using SoraMod.SoraModCode.Cards.Rare;
+using SoraMod.SoraModCode.Cards.Uncommon;
 using SoraMod.SoraModCode.Extensions;
 using SoraMod.SoraModCode.Relics;
 
@@ -33,8 +35,8 @@ public class SoraMod : PlaceholderCharacterModel
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<DodgeRollSoraMod>(),
-        ModelDb.Card<ValorFormSoraMod>()
+        ModelDb.Card<AeroSoraMod>(),
+        ModelDb.Card<WisdomFormSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using SoraMod.SoraModCode.Enums;
 
 namespace SoraMod.SoraModCode.Cards.Basic;
 
@@ -10,7 +11,7 @@ public class FireSoraMod() : SoraModCard(2, CardType.Attack, CardRarity.Basic, T
 {
     protected override HashSet<CardTag> CanonicalTags
     {
-        get => new HashSet<CardTag> { CardTag.Strike };
+        get => new HashSet<CardTag> { SoraModEnums.Magic };
     }
     
     protected override IEnumerable<DynamicVar> CanonicalVars

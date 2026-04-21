@@ -15,7 +15,7 @@
   "SORAMOD-MAGNET_SPLASH_SORA_MOD.title": "Magnet Splash",
   "SORAMOD-REVERT_SORA_MOD.description": "Revert to Base Form",
   "SORAMOD-REVERT_SORA_MOD.title": "Revert",
-  "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nKeyblade Cards Deal +2 Damage.\nThe First Attack Played Costs 2 Less Energy.\nRequires 3 Drive Gauge.",
+  "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nKeyblade Cards Deal +2 Damage.\nThe First Attack Played Per Turn Costs 2 Less Energy.\nRequires 3 Drive Gauge.",
   "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form",
   "SORAMOD-DRIVE_RECOVERY_SORA_MOD.description": "Gain 3 Drive.",
   "SORAMOD-DRIVE_RECOVERY_SORA_MOD.title": "Drive Recovery",
@@ -26,5 +26,9 @@
   "SORAMOD-REACTION_COMMAND_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].\nThe next time you are attacked this turn, deal damage to the attacker equal to the [gold]Block[/gold] you lose.",
   "SORAMOD-REACTION_COMMAND_SORA_MOD.title": "Reaction Command",
   "SORAMOD-RAGNAROK_SORA_MOD.description": "Deal {Damage:diff()} Damage to a random enemy X times.\nFire 1 additional time for every Drive you have.",
-  "SORAMOD-RAGNAROK_SORA_MOD.title": "Ragnarok"
+  "SORAMOD-RAGNAROK_SORA_MOD.title": "Ragnarok",
+  "SORAMOD-WISDOM_FORM_SORA_MOD.description": "Enter Wisdom Form!\nMagic Cards Give +2 Effect\nWhenever You Play a [gold]Skill[/gold], Draw A Card\n Requires 3 Drive Gauge.",
+  "SORAMOD-WISDOM_FORM_SORA_MOD.title": "Wisdom Form",
+  "SORAMOD-AERO_SORA_MOD.description": "Gan {Block:diff()} [gold]Block[/gold].",
+  "SORAMOD-AERO_SORA_MOD.title": "Aero"
 }

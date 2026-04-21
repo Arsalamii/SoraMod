@@ -44,7 +44,7 @@ public class TrinityLimitSoraMod() : SoraModCard(3, CardType.Attack, CardRarity.
         await DamageCmd.Attack(this.DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .TargetingAllOpponents(this.CombatState)
-            .WithHitFx("vfx/vfx_attack_heavy")
+            .WithHitFx("vfx/vfx_giant_horizontal_slash")
             .Execute(choiceContext);
     }
 
