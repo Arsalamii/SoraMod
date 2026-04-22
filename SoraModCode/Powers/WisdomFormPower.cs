@@ -21,7 +21,7 @@ public class WisdomFormPower : SoraModPower
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         // Check if it's a skill AND make sure it is NOT the Wisdom Form card itself!
-        if (cardPlay.Card.Type == CardType.Skill && !(cardPlay.Card is WisdomFormSoraMod) && !(cardPlay.Card is RevertSoraMod))
+        if (cardPlay.Card.Type == CardType.Skill && !(cardPlay.Card is WisdomFormSoraMod) && !(cardPlay.Card is RevertSoraMod) && !(cardPlay.Card is DriveFormsSoraMod))
         {
             await CardPileCmd.Draw(context, 1, this.Owner.Player);
         }

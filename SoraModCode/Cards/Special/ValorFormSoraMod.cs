@@ -4,14 +4,12 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Special;
 
-[Pool(typeof(SoraModCardPool))]
-public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
 {
     protected override bool IsPlayable
     {
@@ -24,6 +22,11 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Comm
             return false;
         }
     }
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new List<CardKeyword>
+    {
+        CardKeyword.Exhaust
+    };
 
     protected override IEnumerable<DynamicVar> CanonicalVars
     {

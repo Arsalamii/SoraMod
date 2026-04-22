@@ -3,10 +3,7 @@ using BaseLib.Utils.NodeFactories;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Relics;
 using SoraMod.SoraModCode.Cards.Basic;
-using SoraMod.SoraModCode.Cards.Common;
-using SoraMod.SoraModCode.Cards.Rare;
 using SoraMod.SoraModCode.Cards.Uncommon;
 using SoraMod.SoraModCode.Extensions;
 using SoraMod.SoraModCode.Relics;
@@ -35,13 +32,12 @@ public class SoraMod : PlaceholderCharacterModel
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<AeroSoraMod>(),
-        ModelDb.Card<WisdomFormSoraMod>()
+        ModelDb.Card<AeroSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<CrownPendant>()
+        ModelDb.Relic<BronzeCrown>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<SoraModCardPool>();

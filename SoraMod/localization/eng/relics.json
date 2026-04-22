@@ -1,5 +1,11 @@
 {
   "SORAMOD-CROWN_PENDANT.description": "At the start of each combat, gain 3 Drive.",
   "SORAMOD-CROWN_PENDANT.flavor": "A heavy silver charm. It hums with the strength of distant friends.",
-  "SORAMOD-CROWN_PENDANT.title": "Crown Pedant"
+  "SORAMOD-CROWN_PENDANT.title": "Crown Pedant",
+  "SORAMOD-SILVER_CROWN.description": "At the start of each combat, draw the Drive Forms card.\n Gain 3 Drive.",
+  "SORAMOD-SILVER_CROWN.flavor": "A Heavy Crown that can be strengthened yet.\nDefeat 5 more Elites to upgrade the crown further.",
+  "SORAMOD-SILVER_CROWN.title": "Silver Crown",
+  "SORAMOD-BRONZE_CROWN.description": "At the start of each combat, draw the Drive Forms card.\n Gain 3 Drive.",
+  "SORAMOD-BRONZE_CROWN.flavor": "A Crown fit for those with greater ambitions.\nDefeat 5 Elites to upgrade the crown. ",
+  "SORAMOD-BRONZE_CROWN.title": "Bronze Crown"
 }

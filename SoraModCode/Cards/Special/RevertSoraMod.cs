@@ -22,6 +22,11 @@ public class RevertSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Token, 
         {
             valorPower.RemoveInternal(); 
         }
+        var wisdomPower = this.Owner.Creature.Powers.FirstOrDefault(p => p is WisdomFormPower);
+        if (wisdomPower != null)
+        {
+            wisdomPower.RemoveInternal(); 
+        }
     }
     
 }

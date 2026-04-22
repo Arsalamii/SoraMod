@@ -8,10 +8,9 @@ using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Special;
 
-[Pool(typeof(SoraModCardPool))]
-public class WisdomFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class WisdomFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
 {
     protected override bool IsPlayable
     {
@@ -25,6 +24,11 @@ public class WisdomFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Com
         }
     }
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new List<CardKeyword>
+    {
+        CardKeyword.Exhaust
+    };
+    
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
         get => new List<DynamicVar> { new PowerVar<WisdomFormPower>(1m) };
