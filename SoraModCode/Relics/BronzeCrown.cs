@@ -40,11 +40,10 @@ public sealed class BronzeCrown() : SoraModRelic
     {
         if (side == this.Owner.Creature.Side)
         {
-            this.Flash();
-
             // Generate the Drive Menu and Grant 3 Stars at the start of combat
             if (combatState.RoundNumber == 1)
             {
+                this.Flash();
                 this.Owner.PlayerCombatState.GainStars(3m); 
                 // Forge the Drive card using the combatState the engine handed us
                 var driveCard = combatState.CreateCard<DriveFormsSoraMod>(this.Owner);

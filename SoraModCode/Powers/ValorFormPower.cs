@@ -19,55 +19,58 @@ public class ValorFormPower : SoraModPower
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        UpdateFirstAttackCost();
+        UpdateFirstKeybladeCost();
     }
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        UpdateFirstAttackCost();
+        UpdateFirstKeybladeCost();
         return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Type == CardType.Attack)
+        // Changed to look for the Keyblade tag!
+        if (cardPlay.Card.Tags.Contains(SoraModEnums.Keyblade))
         {
-            ResetAttackCosts();
+            ResetKeybladeCosts();
         }
         return base.AfterCardPlayed(context, cardPlay);
     }
 
-    private void UpdateFirstAttackCost()
+    private void UpdateFirstKeybladeCost()
     {
-        if (HasPlayedAttackThisTurn) return;
+        if (HasPlayedKeybladeThisTurn) return;
 
         CardPile hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
         if (hand == null) return;
 
         foreach (CardModel card in hand.Cards)
         {
-            if (card.Type == CardType.Attack)
+            // Changed to look for the Keyblade tag!
+            if (card.Tags.Contains(SoraModEnums.Keyblade))
             {
-                card.EnergyCost.SetThisTurnOrUntilPlayed(Math.Max(0, card.EnergyCost.Canonical - 2));
+                // Hardcoded to 0 cost!
+                card.EnergyCost.SetThisTurnOrUntilPlayed(0);
             }
         }
     }
 
-    private void ResetAttackCosts()
+    private void ResetKeybladeCosts()
     {
         CardPile hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
         if (hand == null) return;
 
         foreach (CardModel card in hand.Cards)
         {
-            if (card.Type == CardType.Attack)
+            // Changed to look for the Keyblade tag!
+            if (card.Tags.Contains(SoraModEnums.Keyblade))
             {
                 card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
             }
         }
     }
 
-    // The engine automatically asks this method how much extra damage a card should do!
     public override decimal ModifyDamageAdditive(
         Creature? target,
         decimal amount,
@@ -75,10 +78,16 @@ public class ValorFormPower : SoraModPower
         Creature? dealer,
         CardModel? cardSource)
     {
-        // If we are the one attacking, and the card being used has the Keyblade tag...
         if (dealer == this.Owner && cardSource != null && cardSource.Tags.Contains(SoraModEnums.Keyblade))
         {
-            return 2m; // ...tell the engine to add 2 damage to it!
+            // We recount the history right here, but add a strict rule to IGNORE the cardSource!
+            int previousKeyblades = CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Count(e =>
+                e.HappenedThisTurn(this.CombatState) && 
+                e.CardPlay.Card.Owner.Creature == this.Owner && 
+                e.CardPlay.Card.Tags.Contains(SoraModEnums.Keyblade) &&
+                e.CardPlay.Card != cardSource); // <--- THE MAGIC FIX!
+
+            return previousKeyblades * 2m; 
         }
         
         return 0m;
@@ -98,12 +107,10 @@ public class ValorFormPower : SoraModPower
 
         if (this.Owner.Player.PlayerCombatState.Stars <= 0)
         {
-            // The form is dropping! Find the Revert card...
             var revertCard = this.Owner.Player.PlayerCombatState.AllCards.FirstOrDefault(c => c is RevertSoraMod);
             
             if (revertCard != null)
             {
-                // ...and officially burn it using the ChoiceContext!
                 await CardCmd.Exhaust(choiceContext, revertCard);
             }
 
@@ -111,14 +118,20 @@ public class ValorFormPower : SoraModPower
         }
     }
 
-    private bool HasPlayedAttackThisTurn
+    // NEW PROPERTY: Physically tallies up your combo for the turn
+    private int KeybladesPlayedThisTurn
     {
         get
         {
-            return CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Any(e =>
-                e.HappenedThisTurn(this.CombatState) && e.CardPlay.Card.Owner.Creature == this.Owner && e.CardPlay.Card.Type == CardType.Attack);
+            return CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Count(e =>
+                e.HappenedThisTurn(this.CombatState) && 
+                e.CardPlay.Card.Owner.Creature == this.Owner && 
+                e.CardPlay.Card.Tags.Contains(SoraModEnums.Keyblade));
         }
     }
+    
+    // NEW PROPERTY: A simple true/false check using our combo tally
+    private bool HasPlayedKeybladeThisTurn => KeybladesPlayedThisTurn > 0;
     
     public override async Task AfterRemoved(Creature oldOwner)
     {
@@ -127,11 +140,10 @@ public class ValorFormPower : SoraModPower
             CardPile hand = oldOwner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
             if (hand != null)
             {
-                // We only need to reset attack costs here now! 
-                // Revert is safely handled by its own Exhaust keyword, or the TurnEnd hook above!
                 foreach (CardModel card in hand.Cards)
                 {
-                    if (card.Type == CardType.Attack)
+                    // Changed to look for the Keyblade tag!
+                    if (card.Tags.Contains(SoraModEnums.Keyblade))
                     {
                         card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
                     }
