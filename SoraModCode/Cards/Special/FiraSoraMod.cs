@@ -4,15 +4,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models; // Needed for ModelDb
 using MegaCrit.Sts2.Core.ValueProps;
-using SoraMod.SoraModCode.Cards.Special;
 
-namespace SoraMod.SoraModCode.Cards.Basic;
+namespace SoraMod.SoraModCode.Cards.Special;
 
-public class FireSoraMod : SoraMagicCard
+public class FiraSoraMod : SoraMagicCard
 {
-    private const int EvolutionRequirement = 3;
+    private const int EvolutionRequirement = 5;
 
-    public FireSoraMod() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+    public FiraSoraMod() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
     }
 
@@ -57,20 +56,20 @@ public class FireSoraMod : SoraMagicCard
 
                 if (magicMasterCard.Experience >= EvolutionRequirement)
                 {
-                    await this.EvolveIntoFira(magicMasterCard);
+                    await this.EvolveIntoFiraga(magicMasterCard);
                 }
             }
         }
     }
 
-    private async Task EvolveIntoFira(SoraMagicCard masterDeckCard)
+    private async Task EvolveIntoFiraga(SoraMagicCard masterDeckCard)
     {
-        // 1. Create the brand new Fira Card directly
-        var newFira = this.CardScope.CreateCard<FiraSoraMod>(this.Owner);
+        // 1. Create the brand new Firaga Card directly
+        var newFiraga = this.CardScope.CreateCard<FiragaSoraMod>(this.Owner);
         if (this.IsUpgraded)
         {
-            newFira.UpgradeInternal();
-            newFira.FinalizeUpgradeInternal();
+            newFiraga.UpgradeInternal();
+            newFiraga.FinalizeUpgradeInternal();
         }
 
         // 2. THE FIX: Safely swap it in the Master Deck (Bypasses the IsEnding block!)
@@ -81,14 +80,14 @@ public class FireSoraMod : SoraMagicCard
             {
                 // Yank the old Fire out, and put the new Fira in!
                 masterDeckCard.RemoveFromCurrentPile(); 
-                masterDeck.AddInternal(newFira); 
+                masterDeck.AddInternal(newFiraga); 
             }
         }
 
         // 3. Swap the temporary combat card in your hand (Only if combat isn't fading to black!)
         if (!MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsEnding)
         {
-            await CardCmd.TransformTo<FiraSoraMod>(this);
+            await CardCmd.TransformTo<FiragaSoraMod>(this);
         }
     }
 }

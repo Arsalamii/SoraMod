@@ -14,8 +14,12 @@
   "SORAMOD-TRINITY_LIMIT_SORA_MOD.title": "Trinity Limit",
 
   "_comment2": "========= MAGIC CARDS =========",
-  "SORAMOD-FIRE_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL Enemies.",
+  "SORAMOD-FIRE_SORA_MOD.description": "Deal {Damage} Damage to ALL Enemies.\n[purple](Current EXP: {Exp}/3[/purple]",
   "SORAMOD-FIRE_SORA_MOD.title": "Fire",
+  "SORAMOD-FIRA_SORA_MOD.description": "Deal {Damage} Damage to ALL Enemies.\n[purple](Current EXP: {Exp}/5[/purple]",
+  "SORAMOD-FIRA_SORA_MOD.title": "Fira",
+  "SORAMOD-FIRAGA_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL Enemies.]",
+  "SORAMOD-FIRAGA_SORA_MOD.title": "Firaga",
   "SORAMOD-AERO_SORA_MOD.description": "Gan {Block:diff()} [gold]Block[/gold].",
   "SORAMOD-AERO_SORA_MOD.title": "Aero",
 
@@ -23,7 +27,7 @@
   "SORAMOD-MAGNET_SPLASH_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL enemies.",
   "SORAMOD-MAGNET_SPLASH_SORA_MOD.title": "Magnet Splash",
 
-  "_comment4": "========= BLOCK CARDS =========",
+  "_comment4": "========= SKILL CARDS =========",
   "SORAMOD-GUARD_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "SORAMOD-GUARD_SORA_MOD.title": "Guard",
   "SORAMOD-DODGE_ROLL_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold]\nGain {Block:diff()} [gold]Block[/gold] at the start of your next turn.",
@@ -31,6 +35,14 @@
   "SORAMOD-REACTION_COMMAND_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].\nThe next time you are attacked this turn, deal damage to the attacker equal to the [gold]Block[/gold] you lose.",
   "SORAMOD-REACTION_COMMAND_SORA_MOD.title": "Reaction Command",
 
+  "_comment7": "========= POWER CARDS =========",
+  "SORAMOD-MP_HASTE_SORA_MOD.description": "At the start of your turn, if you have a Magic card in your hand, gain 1 Energy.",
+  "SORAMOD-MP_HASTE_SORA_MOD.title": "MP Haste",
+  "SORAMOD-KEYBLADE_MASTERY_SORA_MOD.description": "Whenever you play 3 Keyblade cards in a single turn, gain 1 Dexterity.",
+  "SORAMOD-KEYBLADE_MASTERY_SORA_MOD.title": "Keyblade Mastery",
+  "SORAMOD-COMBO_MASTER_SORA_MOD.description": "Every 3rd Keyblade card you play in a single turn refunds 1 Energy.",
+  "SORAMOD-COMBO_MASTER_SORA_MOD.title": "Combo Master",
+  
   "_comment5": "========= DRIVE RECOVERY =========",
   "SORAMOD-DRIVE_RECOVERY_SORA_MOD.description": "Gain 3 Drive.",
   "SORAMOD-DRIVE_RECOVERY_SORA_MOD.title": "Drive Recovery",
@@ -40,7 +52,7 @@
   "SORAMOD-DRIVE_FORMS_SORA_MOD.title": "Drive Forms",
   "SORAMOD-REVERT_SORA_MOD.description": "Revert to Base Form.",
   "SORAMOD-REVERT_SORA_MOD.title": "Revert",
-  "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nKeyblade Cards Deal +2 Damage.\nThe First Attack Played Per Turn Costs 2 Less Energy.\nRequires 3 Drive Gauge.",
+  "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nRequires 3 Drive Gauge.",
   "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form",
   "SORAMOD-WISDOM_FORM_SORA_MOD.description": "Enter Wisdom Form!\\nMagic Cards Give +2 Effect\\nWhenever You Play a [gold]Skill[/gold], Draw A Card\\n Requires 3 Drive Gauge.",
   "SORAMOD-WISDOM_FORM_SORA_MOD.title": "Wisdom Form"

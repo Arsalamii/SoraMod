@@ -20,7 +20,7 @@ public sealed class BronzeCrown() : SoraModRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
-        get => new List<DynamicVar> { new DynamicVar("Elites", 5m) };
+        get => new List<DynamicVar> { new DynamicVar("Elites", 2m) };
     }
 
     [SavedProperty]

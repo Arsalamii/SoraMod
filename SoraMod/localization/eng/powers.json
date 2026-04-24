@@ -1,11 +1,20 @@
 {
   "SORAMOD-VALOR_FORM_POWER.description": "Form Changed to Valor Form!",
-  "SORAMOD-VALOR_FORM_POWER.smartDescription": "Valor Form",
+  "SORAMOD-VALOR_FORM_POWER.smartDescription": "Keyblade Cards Deal +2 Damage Per Keyblade Card Played Per Turn.\nThe First Attack Played Per Turn Costs 0 Energy.",
   "SORAMOD-VALOR_FORM_POWER.title": "Valor Form",
   "SORAMOD-REACTION_COMMAND_POWER.description": "",
   "SORAMOD-REACTION_COMMAND_POWER.smartDescription": "",
   "SORAMOD-REACTION_COMMAND_POWER.title": "ReactionCommandPower",
   "SORAMOD-WISDOM_FORM_POWER.description": "Form Changed to Wisdom Form!",
   "SORAMOD-WISDOM_FORM_POWER.smartDescription": "Wisdom Form",
-  "SORAMOD-WISDOM_FORM_POWER.title": "Wisdom Form"
+  "SORAMOD-WISDOM_FORM_POWER.title": "Wisdom Form",
+  "SORAMOD-M_P_HASTE_POWER.description": "",
+  "SORAMOD-M_P_HASTE_POWER.smartDescription": "",
+  "SORAMOD-M_P_HASTE_POWER.title": "MP Haste",
+  "SORAMOD-KEYBLADE_MASTERY_POWER.description": "",
+  "SORAMOD-KEYBLADE_MASTERY_POWER.smartDescription": "",
+  "SORAMOD-KEYBLADE_MASTERY_POWER.title": "Keyblade Mastery",
+  "SORAMOD-COMBO_MASTER_POWER.description": "",
+  "SORAMOD-COMBO_MASTER_POWER.smartDescription": "",
+  "SORAMOD-COMBO_MASTER_POWER.title": "Combo Master"
 }

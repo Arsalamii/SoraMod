@@ -30,9 +30,10 @@ public class SoraMod : PlaceholderCharacterModel
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<GuardSoraMod>(),
-        ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<AeroSoraMod>()
+        ModelDb.Card<FireSoraMod>(),
+        ModelDb.Card<FireSoraMod>(),
+        ModelDb.Card<ComboMasterSoraMod>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
@@ -58,8 +59,8 @@ public class SoraMod : PlaceholderCharacterModel
         }
     }
 
-    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
+    public override string CustomIconTexturePath => "sora_icon.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "sora_select.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "sora_icon.png".CharacterUiPath();
 }
