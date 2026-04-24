@@ -16,5 +16,8 @@
   "SORAMOD-KEYBLADE_MASTERY_POWER.title": "Keyblade Mastery",
   "SORAMOD-COMBO_MASTER_POWER.description": "",
   "SORAMOD-COMBO_MASTER_POWER.smartDescription": "",
-  "SORAMOD-COMBO_MASTER_POWER.title": "Combo Master"
+  "SORAMOD-COMBO_MASTER_POWER.title": "Combo Master",
+  "ASSIST_TRACKER_POWER.description": "",
+  "ASSIST_TRACKER_POWER.smartDescription": "",
+  "ASSIST_TRACKER_POWER.title": "Assist Tracker"
 }

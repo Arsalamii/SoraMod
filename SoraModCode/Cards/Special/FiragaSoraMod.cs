@@ -8,8 +8,8 @@ using SoraMod.SoraModCode.Enums;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 
-[Pool(typeof(SoraModCardPool))]
-public class FiragaSoraMod() : SoraMagicCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
+[Pool(typeof(SoraEvolutionPool))]
+public class FiragaSoraMod() : SoraMagicCard(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
     protected override HashSet<CardTag> CanonicalTags
     {

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models; // Needed for ModelDb
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Cards.Special;
 
-namespace SoraMod.SoraModCode.Cards.Basic;
+namespace SoraMod.SoraModCode.Cards.Common;
 
 public class FireSoraMod : SoraMagicCard
 {

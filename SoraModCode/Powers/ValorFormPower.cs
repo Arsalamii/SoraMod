@@ -15,7 +15,7 @@ namespace SoraMod.SoraModCode.Powers;
 public class ValorFormPower : SoraModPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {

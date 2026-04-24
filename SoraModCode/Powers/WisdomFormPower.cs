@@ -15,7 +15,7 @@ namespace SoraMod.SoraModCode.Powers;
 public class WisdomFormPower : SoraModPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     // 1. SKILL CARD DRAW EFFECT
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)

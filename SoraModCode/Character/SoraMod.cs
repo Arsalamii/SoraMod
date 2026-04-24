@@ -4,6 +4,8 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Cards.Basic;
+using SoraMod.SoraModCode.Cards.Common;
+using SoraMod.SoraModCode.Cards.Rare;
 using SoraMod.SoraModCode.Cards.Uncommon;
 using SoraMod.SoraModCode.Extensions;
 using SoraMod.SoraModCode.Relics;
@@ -23,17 +25,16 @@ public class SoraMod : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeSoraMod>(),
-        ModelDb.Card<StrikeSoraMod>(),
-        ModelDb.Card<StrikeSoraMod>(),
-        ModelDb.Card<StrikeSoraMod>(),
-        ModelDb.Card<GuardSoraMod>(),
-        ModelDb.Card<GuardSoraMod>(),
-        ModelDb.Card<GuardSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<MagnetSoraMod>(),
+        ModelDb.Card<MagnetSoraMod>(),
+        ModelDb.Card<MagnetSoraMod>(),
         ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<ComboMasterSoraMod>()
+        ModelDb.Card<CureSoraMod>(),
+        ModelDb.Card<FireSoraMod>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
@@ -59,8 +60,8 @@ public class SoraMod : PlaceholderCharacterModel
         }
     }
 
-    public override string CustomIconTexturePath => "sora_icon.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "sora_select.png".CharacterUiPath();
+    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "sora_icon.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
 }

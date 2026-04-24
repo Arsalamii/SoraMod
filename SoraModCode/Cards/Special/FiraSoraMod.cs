@@ -1,17 +1,20 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models; // Needed for ModelDb
 using MegaCrit.Sts2.Core.ValueProps;
+using SoraMod.SoraModCode.Character;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 
+[Pool(typeof(SoraEvolutionPool))]
 public class FiraSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 5;
 
-    public FiraSoraMod() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+    public FiraSoraMod() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
     }
 
