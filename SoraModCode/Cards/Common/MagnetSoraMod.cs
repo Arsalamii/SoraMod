@@ -28,7 +28,11 @@ public class MagnetSoraMod : SoraMagicCard
         await CreatureCmd.TriggerAnim(this.Owner.Creature, "Cast", this.Owner.Character.CastAnimDelay);
 
         var masterDeck = PileType.Deck.GetPile(this.Owner);
-        CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => c.Id == this.Id);
+        
+        // THE FIX: Now we securely match the combat card's serial number to the Master Deck's serial number!
+        CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => 
+            c is SoraMagicCard smc && smc.MagicSerialNumber == this.MagicSerialNumber
+        );
 
         foreach (var monster in this.CombatState.Enemies)
         {
