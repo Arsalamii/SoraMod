@@ -1,8 +1,9 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using HarmonyLib;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models; // Needed for ModelDb
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Cards.Special;
 
@@ -29,15 +30,13 @@ public class FireSoraMod : SoraMagicCard
         {
             if (monster != null && !monster.IsDead)
             {
-                // Snapshot HP before the attack!
-                int hpBefore = monster.CurrentHp; // (Try CurrentHp if Hp throws an error)
+                int hpBefore = monster.CurrentHp; 
 
                 await DamageCmd.Attack(this.DynamicVars.Damage.BaseValue)
                     .FromCard(this)
                     .Targeting(monster)
                     .Execute(choiceContext);
 
-                // Bulletproof Kill Check: Is it flagged as dead, OR did its HP hit 0?
                 if (monster.IsDead || (hpBefore > 0 && monster.CurrentHp <= 0))
                 {
                     totalKillsThisPlay++;
@@ -45,50 +44,61 @@ public class FireSoraMod : SoraMagicCard
             }
         }
 
-        // Grant EXP and check for Evolution!
         if (totalKillsThisPlay > 0)
         {
             var masterDeck = PileType.Deck.GetPile(this.Owner);
-            CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => c.Id == this.Id);
+            
+            // 1. THE SERIAL NUMBER FIX: Re-added so multiple Fires track perfectly!
+            CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => 
+                c is SoraMagicCard smc && smc.MagicSerialNumber == this.MagicSerialNumber
+            );
 
             if (trueMasterCard is SoraMagicCard magicMasterCard)
             {
-                magicMasterCard.Experience += totalKillsThisPlay;
-
-                if (magicMasterCard.Experience >= EvolutionRequirement)
+                // 2. THE EXP CAP: Prevents Fire from ever going to 5/3!
+                if (magicMasterCard.Experience < EvolutionRequirement)
                 {
-                    await this.EvolveIntoFira(magicMasterCard);
+                    magicMasterCard.Experience += totalKillsThisPlay;
+                    
+                    // Clamp it so it doesn't overshoot
+                    if (magicMasterCard.Experience > EvolutionRequirement)
+                    {
+                        magicMasterCard.Experience = EvolutionRequirement;
+                    }
+
+                    if (magicMasterCard.Experience >= EvolutionRequirement)
+                    {
+                        await this.EvolveIntoFira(magicMasterCard);
+                    }
                 }
             }
         }
     }
 
-    private async Task EvolveIntoFira(SoraMagicCard masterDeckCard)
+    public async Task EvolveIntoFira(SoraMagicCard masterDeckCard)
     {
-        // 1. Create the brand new Fira Card directly
-        var newFira = this.CardScope.CreateCard<FiraSoraMod>(this.Owner);
-        if (this.IsUpgraded)
-        {
-            newFira.UpgradeInternal();
-            newFira.FinalizeUpgradeInternal();
-        }
-
-        // 2. THE FIX: Safely swap it in the Master Deck (Bypasses the IsEnding block!)
         if (masterDeckCard != null)
         {
+            // 1. Create the new Fira
+            var newFira = this.CardScope.CreateCard<FiraSoraMod>(this.Owner);
+
+            // 2. Transfer the Upgrades
+            if (this.IsUpgraded)
+            {
+                newFira.UpgradeInternal();
+                newFira.FinalizeUpgradeInternal();
+            }
+
+            // 3. The True "Pokémon" Swap in the Master Deck
             var masterDeck = PileType.Deck.GetPile(this.Owner);
             if (masterDeck != null && masterDeck.Cards.Contains(masterDeckCard))
             {
-                // Yank the old Fire out, and put the new Fira in!
                 masterDeckCard.RemoveFromCurrentPile(); 
+                
+                // We use AddInternal because it perfectly inserts the card into the Run's Master Deck.
+                // It securely completes the evolution for the next room!
                 masterDeck.AddInternal(newFira); 
             }
-        }
-
-        // 3. Swap the temporary combat card in your hand (Only if combat isn't fading to black!)
-        if (!MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsEnding)
-        {
-            await CardCmd.TransformTo<FiraSoraMod>(this);
         }
     }
 }

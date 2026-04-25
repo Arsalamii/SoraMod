@@ -1,11 +1,11 @@
 {
-  "SORAMOD-VALOR_FORM_POWER.description": "Form Changed to Valor Form!",
+  "SORAMOD-VALOR_FORM_POWER.description": "Keyblade Cards deal +2 damage per Keyblade Card played this turn.\nThe first Attack played per turn costs 0 Energy.",
   "SORAMOD-VALOR_FORM_POWER.smartDescription": "Keyblade Cards Deal +2 Damage Per Keyblade Card Played Per Turn.\nThe First Attack Played Per Turn Costs 0 Energy.",
   "SORAMOD-VALOR_FORM_POWER.title": "Valor Form",
   "SORAMOD-REACTION_COMMAND_POWER.description": "",
   "SORAMOD-REACTION_COMMAND_POWER.smartDescription": "",
   "SORAMOD-REACTION_COMMAND_POWER.title": "ReactionCommandPower",
-  "SORAMOD-WISDOM_FORM_POWER.description": "Form Changed to Wisdom Form!",
+  "SORAMOD-WISDOM_FORM_POWER.description": "Magic Cards Give +2 Effect\nWhenever You Play a [gold]Skill[/gold], Draw A Card.",
   "SORAMOD-WISDOM_FORM_POWER.smartDescription": "Wisdom Form",
   "SORAMOD-WISDOM_FORM_POWER.title": "Wisdom Form",
   "SORAMOD-M_P_HASTE_POWER.description": "",

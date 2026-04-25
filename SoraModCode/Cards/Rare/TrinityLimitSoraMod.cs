@@ -9,7 +9,7 @@ using SoraMod.SoraModCode.Character;
 namespace SoraMod.SoraModCode.Cards.Rare;
 
 [Pool(typeof(SoraModCardPool))]
-public class TrinityLimitSoraMod() : SoraModCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+public class TrinityLimitSoraMod() : SoraKeybladeCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
     // 1. REGISTER THE DAMAGE
     protected override IEnumerable<DynamicVar> CanonicalVars

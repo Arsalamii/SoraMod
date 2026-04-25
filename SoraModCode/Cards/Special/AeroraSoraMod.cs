@@ -8,25 +8,24 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using SoraMod.SoraModCode.DynamicVars;
 using BaseLib.Extensions;
 using BaseLib.Utils;
-using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Special;
 
-[Pool(typeof(SoraModCardPool))]
-public class AeroSoraMod : SoraMagicCard
+[Pool(typeof(SoraEvolutionPool))] 
+public class AeroraSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 3;
 
-    public AeroSoraMod() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public AeroraSoraMod() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
     // 1. Use our custom UI variable!
     protected override IEnumerable<DynamicVar> CanonicalVars => new List<DynamicVar>
     {
-        new SoraPlatingVar(3)
+        new SoraPlatingVar(6)
     };
 
     // 2. Manually tell the game to show the Plating tooltip when the player hovers over Aero!
@@ -40,10 +39,10 @@ public class AeroSoraMod : SoraMagicCard
         await CreatureCmd.TriggerAnim(this.Owner.Creature, "Buff", this.Owner.Character.CastAnimDelay);
 
         // 3. We bypass the engine error by just doing the math securely right here!
-        decimal finalPlating = 3; // Base value
+        decimal finalPlating = 6; // Base value
         if (this.Owner.HasPower<WisdomFormPower>())
         {
-            finalPlating += 2; // Wisdom form bonus
+            finalPlating += 4; // Wisdom form bonus
         }
 
         // Apply the calculated Plating
@@ -66,15 +65,15 @@ public class AeroSoraMod : SoraMagicCard
 
             if (magicMasterCard.Experience >= EvolutionRequirement)
             {
-                await this.EvolveIntoAerora(magicMasterCard);
+                await this.EvolveIntoAeroga(magicMasterCard);
             }
         }
     }
 
     // ... (Keep your standard EvolveIntoAerora logic down here) ...
-    public async Task EvolveIntoAerora(SoraMagicCard masterDeckCard)
+    public async Task EvolveIntoAeroga(SoraMagicCard masterDeckCard)
     {
-        var newAerora = this.CardScope.CreateCard<AeroraSoraMod>(this.Owner);
+        var newAerora = this.CardScope.CreateCard<AerogaSoraMod>(this.Owner);
         if (this.IsUpgraded)
         {
             newAerora.UpgradeInternal();

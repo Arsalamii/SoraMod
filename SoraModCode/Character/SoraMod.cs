@@ -25,10 +25,10 @@ public class SoraMod : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<FireSoraMod>(),
         ModelDb.Card<StrikeSoraMod>(),
         ModelDb.Card<StrikeSoraMod>(),
+        ModelDb.Card<AeroSoraMod>(),
+        ModelDb.Card<AeroSoraMod>(),
         ModelDb.Card<MagnetSoraMod>(),
         ModelDb.Card<MagnetSoraMod>(),
         ModelDb.Card<MagnetSoraMod>(),

@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace SoraMod.SoraModCode.Cards.Rare;
 
 [Pool(typeof(SoraModCardPool))]
-public class RagnarokSoraMod() : SoraModCard(0, CardType.Attack, CardRarity.Rare, TargetType.RandomEnemy) 
+public class RagnarokSoraMod() : SoraKeybladeCard(0, CardType.Attack, CardRarity.Rare, TargetType.RandomEnemy) 
 {
     protected override bool HasEnergyCostX => true;
 

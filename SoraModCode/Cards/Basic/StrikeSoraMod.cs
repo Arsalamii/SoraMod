@@ -7,20 +7,8 @@ using SoraMod.SoraModCode.Enums;
 
 namespace SoraMod.SoraModCode.Cards.Basic;
 
-public class StrikeSoraMod : SoraModCard
+public class StrikeSoraMod() : SoraKeybladeCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
-    public StrikeSoraMod() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
-    {
-    }
-    
-    protected override HashSet<CardTag> CanonicalTags
-    {
-        get => new HashSet<CardTag>
-        {
-            CardTag.Strike,
-            SoraModEnums.Keyblade
-        };
-    }
     
     protected override IEnumerable<DynamicVar> CanonicalVars
     {

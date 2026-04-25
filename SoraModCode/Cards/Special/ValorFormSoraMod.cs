@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Character;
@@ -26,6 +27,11 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Toke
     public override IEnumerable<CardKeyword> CanonicalKeywords => new List<CardKeyword>
     {
         CardKeyword.Exhaust
+    };
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new List<IHoverTip>
+    {
+        HoverTipFactory.FromPower<ValorFormPower>()
     };
 
     protected override IEnumerable<DynamicVar> CanonicalVars

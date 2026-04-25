@@ -12,17 +12,8 @@ using SoraMod.SoraModCode.Enums;
 namespace SoraMod.SoraModCode.Cards.Common;
 
 [Pool(typeof(SoraModCardPool))]
-public class SlapshotSoraMod() : SoraModCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class SlapshotSoraMod() : SoraKeybladeCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override HashSet<CardTag> CanonicalTags
-    {
-        get => new HashSet<CardTag>
-        {
-            CardTag.Strike,
-            SoraModEnums.Keyblade
-        };
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
         get => new List<DynamicVar> { new DamageVar(3m, ValueProp.Move) };

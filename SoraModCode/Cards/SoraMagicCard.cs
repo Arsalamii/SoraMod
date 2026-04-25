@@ -5,10 +5,7 @@ using SoraMod.SoraModCode.Enums;
 
 namespace SoraMod.SoraModCode.Cards;
 
-// 1. Inherit from SoraModCard! 
-// 2. We only need the 4 base parameters (cost, type, rarity, target).
-public abstract class SoraMagicCard(int cost, CardType type, CardRarity rarity, TargetType target) 
-    : SoraModCard(cost, type, rarity, target)
+public abstract class SoraMagicCard(int cost, CardType type, CardRarity rarity, TargetType target) : SoraModCard(cost, type, rarity, target)
 {
     // Gives every single card a unique, randomized serial number!
     public string MagicSerialNumber { get; set; } = System.Guid.NewGuid().ToString();
@@ -26,7 +23,6 @@ public abstract class SoraMagicCard(int cost, CardType type, CardRarity rarity, 
         }
     }
     
-    // This allows us to use !Exp! in our JSON localization files!
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

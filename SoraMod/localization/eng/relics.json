@@ -7,5 +7,8 @@
   "SORAMOD-SILVER_CROWN.title": "Silver Crown",
   "SORAMOD-BRONZE_CROWN.description": "At the start of each combat, draw the Drive Forms card.\n Gain 3 Drive.",
   "SORAMOD-BRONZE_CROWN.flavor": "A Crown fit for those with greater ambitions.\nDefeat 5 Elites to upgrade the crown. ",
-  "SORAMOD-BRONZE_CROWN.title": "Bronze Crown"
+  "SORAMOD-BRONZE_CROWN.title": "Bronze Crown",
+  "SORAMOD-DONALD.description": "At the end of your turn, play a random [purple]Magic[/purple] card from your discard pile.",
+  "SORAMOD-DONALD.flavor": "Known to unleash devastating elemental fury just moments after you desperately needed healing.",
+  "SORAMOD-DONALD.title": "Donald Duck"
 }

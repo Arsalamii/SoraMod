@@ -20,8 +20,12 @@
   "SORAMOD-FIRA_SORA_MOD.title": "Fira",
   "SORAMOD-FIRAGA_SORA_MOD.description": "Deal {Damage:diff()} Damage to ALL Enemies.",
   "SORAMOD-FIRAGA_SORA_MOD.title": "Firaga",
-  "SORAMOD-AERO_SORA_MOD.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "SORAMOD-AERO_SORA_MOD.description": "Gain {Plating:diff()} [gold]Plating[/gold].\\n[purple](Current EXP: {Exp}/3)[/purple]",
   "SORAMOD-AERO_SORA_MOD.title": "Aero",
+  "SORAMOD-AERORA_SORA_MOD.description": "Gain {Plating:diff()} [gold]Plating[/gold].\\n[purple](Current EXP: {Exp}/3)[/purple]",
+  "SORAMOD-AERORA_SORA_MOD.title": "Aerora",
+  "SORAMOD-AEROGA_SORA_MOD.description": "Gain {Plating:diff()} [gold]Plating[/gold].\\n[purple](Current EXP: {Exp}/3)[/purple]",
+  "SORAMOD-AEROGA_SORA_MOD.title": "Aeroga",
   "SORAMOD-CURE_SORA_MOD.description": "Heal {Heal:diff()} HP.\n[purple](Current EXP: {Exp}/3)[/purple]",
   "SORAMOD-CURE_SORA_MOD.title": "Cure",
   "SORAMOD-CURA_SORA_MOD.description": "Heal {Heal:diff()} HP.\n[purple](Current EXP: {Exp}/3)[/purple]",
@@ -66,6 +70,6 @@
   "SORAMOD-REVERT_SORA_MOD.title": "Revert",
   "SORAMOD-VALOR_FORM_SORA_MOD.description": "Enter Valor Form!\nRequires 3 Drive Gauge.",
   "SORAMOD-VALOR_FORM_SORA_MOD.title": "Valor Form",
-  "SORAMOD-WISDOM_FORM_SORA_MOD.description": "Enter Wisdom Form!\\nMagic Cards Give +2 Effect\\nWhenever You Play a [gold]Skill[/gold], Draw A Card\\n Requires 3 Drive Gauge.",
+  "SORAMOD-WISDOM_FORM_SORA_MOD.description": "Enter Wisdom Form!\n Requires 3 Drive Gauge.",
   "SORAMOD-WISDOM_FORM_SORA_MOD.title": "Wisdom Form"
 }
