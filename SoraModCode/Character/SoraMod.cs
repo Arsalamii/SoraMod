@@ -64,4 +64,5 @@ public class SoraMod : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "sora_select.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "sora_icon.png".CharacterUiPath();
+    public override string CustomVisualPath => "res://SoraMod/animation/sora_combat_visuals.tscn";
 }

@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://v228t6alox4l"]
+
+[ext_resource type="Texture2D" uid="uid://b2wnhtl2p5txi" path="res://SoraMod/animation/Attack1.png" id="1_omrfp"]
+[ext_resource type="Texture2D" uid="uid://da3mxf1ex8h0h" path="res://SoraMod/animation/Attack2.png" id="2_prdh2"]
+[ext_resource type="Texture2D" uid="uid://clgs6y2kkm44k" path="res://SoraMod/animation/Idle1.png" id="2_sfuxg"]
+[ext_resource type="Texture2D" uid="uid://2wh3d2v6wet1" path="res://SoraMod/animation/Idle2.png" id="3_420cu"]
+[ext_resource type="Texture2D" uid="uid://dpib3m66nc5yv" path="res://SoraMod/animation/Attack3.png" id="3_s11hu"]
+[ext_resource type="Texture2D" uid="uid://cumrb4otpoe3r" path="res://SoraMod/animation/Attack4.png" id="4_6g4yy"]
+[ext_resource type="Texture2D" uid="uid://c8ejxx66rwq5y" path="res://SoraMod/animation/Idle3.png" id="4_fslbg"]
+[ext_resource type="Texture2D" uid="uid://bamcc5kfojjcq" path="res://SoraMod/animation/Idle4.png" id="5_i7ku2"]
+[ext_resource type="Texture2D" uid="uid://7tnpobcqgocx" path="res://SoraMod/animation/Attack5.png" id="5_qiyvy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_420cu"]
+animations = [{
+"frames": [{
+"duration": 1.61,
+"texture": ExtResource("1_omrfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_prdh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s11hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6g4yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qiyvy")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.51,
+"texture": ExtResource("2_sfuxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_420cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fslbg")
+}, {
+"duration": 0.91,
+"texture": ExtResource("5_i7ku2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_dshgf"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_li8uo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sonl6"]
+_data = {
+&"RESET": SubResource("Animation_li8uo"),
+&"attack": SubResource("Animation_dshgf")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -127)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_420cu")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sonl6")
+}
