@@ -17,3 +17,5 @@ obj/
 
 # User Created
 KnownBugs.txt
+/SoraMod/animation/IdleNoBackground.psd
+/SoraMod/animation/valor_swap.gdshader
