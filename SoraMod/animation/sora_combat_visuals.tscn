@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://v228t6alox4l"]
+[gd_scene load_steps=22 format=3 uid="uid://v228t6alox4l"]
 
 [ext_resource type="Texture2D" uid="uid://b2wnhtl2p5txi" path="res://SoraMod/animation/Attack1.png" id="1_omrfp"]
 [ext_resource type="Texture2D" uid="uid://da3mxf1ex8h0h" path="res://SoraMod/animation/Attack2.png" id="2_prdh2"]
@@ -9,6 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://c8ejxx66rwq5y" path="res://SoraMod/animation/Idle3.png" id="4_fslbg"]
 [ext_resource type="Texture2D" uid="uid://bamcc5kfojjcq" path="res://SoraMod/animation/Idle4.png" id="5_i7ku2"]
 [ext_resource type="Texture2D" uid="uid://7tnpobcqgocx" path="res://SoraMod/animation/Attack5.png" id="5_qiyvy"]
+[ext_resource type="Texture2D" uid="uid://jkpd1inia7yu" path="res://SoraMod/animation/Skill1.png" id="10_sonl6"]
+[ext_resource type="Texture2D" uid="uid://wlbbpqnydw4b" path="res://SoraMod/animation/Skill2.png" id="11_mgj5e"]
+[ext_resource type="Texture2D" uid="uid://ddiuochvnhur8" path="res://SoraMod/animation/Skill3.png" id="12_0rraa"]
+[ext_resource type="Texture2D" uid="uid://cyc6fr7vl5xmg" path="res://SoraMod/animation/Skill4.png" id="13_52ad0"]
+[ext_resource type="Texture2D" uid="uid://c6mj21gy8w60x" path="res://SoraMod/animation/Skill5.png" id="14_c8y6y"]
+[ext_resource type="Texture2D" uid="uid://ds6w4nu04ji7j" path="res://SoraMod/animation/Skill6.png" id="15_rr517"]
+[ext_resource type="Texture2D" uid="uid://dsx0lupgbhpqu" path="res://SoraMod/animation/Skill7.png" id="16_5gixo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_420cu"]
 animations = [{
@@ -48,6 +55,32 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.51,
+"texture": ExtResource("10_sonl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mgj5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0rraa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_52ad0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_c8y6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rr517")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5gixo")
+}],
+"loop": false,
+"name": &"skill",
+"speed": 7.0
 }]
 
 [sub_resource type="Animation" id="Animation_li8uo"]
@@ -87,10 +120,10 @@ tracks/0/path = NodePath("Visuals:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"attack"]
+"values": [&"attack", &"idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -99,16 +132,45 @@ tracks/1/path = NodePath("Visuals:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_l4gag"]
+resource_name = "skill"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"skill", &"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sonl6"]
 _data = {
 &"RESET": SubResource("Animation_li8uo"),
-&"attack": SubResource("Animation_dshgf")
+&"attack": SubResource("Animation_dshgf"),
+&"skill": SubResource("Animation_l4gag")
 }
 
 [node name="Node2D" type="Node2D"]

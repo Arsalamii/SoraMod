@@ -34,10 +34,10 @@ public class AeroSoraMod : SoraMagicCard
     {
         HoverTipFactory.FromPower<PlatingPower>()
     };
-
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(this.Owner.Creature, "Buff", this.Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(this.Owner.Creature, "skill", this.Owner.Character.CastAnimDelay);
 
         // 3. We bypass the engine error by just doing the math securely right here!
         decimal finalPlating = 3; // Base value
