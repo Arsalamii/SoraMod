@@ -17,15 +17,18 @@ public class WisdomFormPower : SoraModPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    // 1. SKILL CARD DRAW EFFECT
+    // 1. MAGIC CARD DRAW EFFECT
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        // Check if it's a skill AND make sure it is NOT the Wisdom Form card itself!
-        if (cardPlay.Card.Type == CardType.Skill && !(cardPlay.Card is WisdomFormSoraMod) && !(cardPlay.Card is RevertSoraMod) && !(cardPlay.Card is DriveFormsSoraMod))
+        // Check if it has the Magic tag AND make sure it is NOT the Wisdom Form card itself!
+        if (cardPlay.Card.Tags.Contains(SoraModEnums.Magic) && 
+            !(cardPlay.Card is WisdomFormSoraMod) && 
+            !(cardPlay.Card is RevertSoraMod) && 
+            !(cardPlay.Card is DriveFormsSoraMod))
         {
             await CardPileCmd.Draw(context, 1, this.Owner.Player);
         }
-        
+    
         await base.AfterCardPlayed(context, cardPlay);
     }
 

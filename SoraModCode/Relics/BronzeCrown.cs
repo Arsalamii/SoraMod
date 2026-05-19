@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Combat;
 using SoraMod.SoraModCode.Cards.Special;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using SoraMod.SoraModCode.Powers;
 
 namespace SoraMod.SoraModCode.Relics;
 
@@ -70,5 +71,36 @@ public sealed class BronzeCrown() : SoraModRelic
             // Replace this relic with the Silver Crown!
             await RelicCmd.Replace(this, ModelDb.Relic<SilverCrown>().ToMutable());
         }
+    }
+    
+    private bool _hasUsedAntiForm;
+
+    // This saves the state even if the player quits and reloads the run!
+    [SavedProperty]
+    public bool HasUsedAntiForm
+    {
+        get => this._hasUsedAntiForm;
+        set
+        {
+            this.AssertMutable();
+            this._hasUsedAntiForm = value;
+        }
+    }
+
+    public override async Task BeforeCombatStartLate()
+    {
+        // Only apply the death-save listener if Sora hasn't spent it yet!
+        if (!this.HasUsedAntiForm)
+        {
+            await PowerCmd.Apply<AntiFormListenerPower>(
+                this.Owner.Creature, 
+                1m, 
+                this.Owner.Creature, 
+                null, 
+                true
+            );
+        }
+        
+        await base.BeforeCombatStartLate();
     }
 }

@@ -11,14 +11,6 @@ namespace SoraMod.SoraModCode.Cards.Special;
 [Pool(typeof(SoraEvolutionPool))]
 public class FiragaSoraMod() : SoraMagicCard(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override HashSet<CardTag> CanonicalTags
-    {
-        get => new HashSet<CardTag>
-        {
-            SoraModEnums.Keyblade,
-        };
-    }
-    
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
         get => new List<DynamicVar> { new DamageVar(14m, ValueProp.Move) };

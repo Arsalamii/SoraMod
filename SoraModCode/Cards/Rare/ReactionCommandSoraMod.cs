@@ -10,7 +10,7 @@ using SoraMod.SoraModCode.Powers;
 namespace SoraMod.SoraModCode.Cards.Rare;
 
 [Pool(typeof(SoraModCardPool))]
-public class ReactionCommandSoraMod() : SoraKeybladeCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class ReactionCommandSoraMod() : SoraModCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars
     {

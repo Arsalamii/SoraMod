@@ -20,7 +20,7 @@ public class SoraMod : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 100;
+    public override int StartingHp => 20;
     public override bool ShouldAlwaysShowStarCounter => true;
 
     public override IEnumerable<CardModel> StartingDeck =>
