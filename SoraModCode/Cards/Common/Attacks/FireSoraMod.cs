@@ -19,7 +19,7 @@ public class FireSoraMod : SoraMagicCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new List<DynamicVar>
     {
-        new DamageVar(50m, ValueProp.Move) 
+        new DamageVar(5m, ValueProp.Move) 
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

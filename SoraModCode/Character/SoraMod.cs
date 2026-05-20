@@ -11,7 +11,7 @@ using SoraMod.SoraModCode.Relics;
 
 namespace SoraMod.SoraModCode.Character;
 
-public class SoraMod : PlaceholderCharacterModel
+public abstract class SoraMod : PlaceholderCharacterModel
 {
     public const string CharacterId = "SoraMod";
     
@@ -44,11 +44,7 @@ public class SoraMod : PlaceholderCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<SoraModCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<SoraModRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<SoraModPotionPool>();
-
-    /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets.
-        These are just some of the simplest assets, given some placeholders to differentiate your character with.
-        You don't have to, but you're suggested to rename these images. */
+    
     public override Control CustomIcon
     {
         get

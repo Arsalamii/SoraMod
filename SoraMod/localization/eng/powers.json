@@ -28,5 +28,8 @@
   "ASSIST_TRACKER_POWER.title": "Assist Tracker",
   "SORAMOD-STRIKE_RAID_POWER.description": "",
   "SORAMOD-STRIKE_RAID_POWER.smartDescription": "",
-  "SORAMOD-STRIKE_RAID_POWER.title": "StrikeRaidPower"
+  "SORAMOD-STRIKE_RAID_POWER.title": "StrikeRaidPower",
+  "SORAMOD-UPPER_SLASH_POWER.description": "",
+  "SORAMOD-UPPER_SLASH_POWER.smartDescription": "",
+  "SORAMOD-UPPER_SLASH_POWER.title": "UpperSlashPower"
 }
