@@ -25,5 +25,8 @@
   "SORAMOD-COMBO_MASTER_POWER.title": "Combo Master",
   "ASSIST_TRACKER_POWER.description": "",
   "ASSIST_TRACKER_POWER.smartDescription": "",
-  "ASSIST_TRACKER_POWER.title": "Assist Tracker"
+  "ASSIST_TRACKER_POWER.title": "Assist Tracker",
+  "SORAMOD-STRIKE_RAID_POWER.description": "",
+  "SORAMOD-STRIKE_RAID_POWER.smartDescription": "",
+  "SORAMOD-STRIKE_RAID_POWER.title": "StrikeRaidPower"
 }
