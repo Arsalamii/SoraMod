@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Enums;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Forms;
 
 public class ValorFormPower : SoraModPower
 {

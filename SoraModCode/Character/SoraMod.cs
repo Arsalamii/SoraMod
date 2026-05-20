@@ -4,9 +4,8 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Cards.Basic;
-using SoraMod.SoraModCode.Cards.Common;
-using SoraMod.SoraModCode.Cards.Rare;
-using SoraMod.SoraModCode.Cards.Uncommon;
+using SoraMod.SoraModCode.Cards.Common.Attacks;
+using SoraMod.SoraModCode.Cards.Rare.Skills;
 using SoraMod.SoraModCode.Extensions;
 using SoraMod.SoraModCode.Relics;
 

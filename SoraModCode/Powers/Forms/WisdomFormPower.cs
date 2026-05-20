@@ -10,7 +10,7 @@ using SoraMod.SoraModCode.Enums;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using SoraMod.SoraModCode.Cards.Common;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Forms;
 
 public class WisdomFormPower : SoraModPower
 {

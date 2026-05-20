@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Enums;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class MagnetSplashSoraMod() : SoraModCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)

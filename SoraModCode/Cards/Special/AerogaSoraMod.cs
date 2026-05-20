@@ -8,7 +8,7 @@ using SoraMod.SoraModCode.DynamicVars;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 

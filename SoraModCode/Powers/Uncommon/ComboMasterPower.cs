@@ -4,19 +4,17 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using SoraMod.SoraModCode.Enums;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Uncommon;
 
-public class KeybladeMasteryPower : SoraModPower
+public class ComboMasterPower : SoraModPower
 {
     // Our hidden tally for the current turn
     private int _keybladeCounter = 0;
 
     public override PowerType Type => PowerType.Buff;
     
-    // Using Accumulate means playing multiple Keyblade Masteries stacks the reward!
-    // (e.g., 2 stacks = 2 Dex every 3 cards)
+    // Accumulate means playing multiple Combo Masters stacks the energy refund!
     public override PowerStackType StackType => PowerStackType.Counter; 
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
@@ -24,24 +22,19 @@ public class KeybladeMasteryPower : SoraModPower
         // 1. Did Sora just play a Keyblade?
         if (cardPlay.Card.Tags.Contains(SoraModEnums.Keyblade) && cardPlay.Card.Owner.Creature == this.Owner)
         {
-            // 2. Increase our hidden counter!
+            // 2. Increase the counter
             this._keybladeCounter++;
 
-            // 3. Did we hit the magic number 3?
+            // 3. Did we hit the 3rd swing?
             if (this._keybladeCounter >= 3)
             {
-                this.Flash(); // Give the power a nice visual pop on the UI!
+                this.Flash(); 
                 
-                // 4. Grant the Dexterity! 
-                // (Note: Make sure DexterityPower turns blue/teal. If it's red, Alt+Enter to import the STS2 core powers!)
-                await PowerCmd.Apply<DexterityPower>(
-                    this.Owner,
-                    this.Amount, // We use this.Amount so stacked powers grant more Dex!
-                    this.Owner,
-                    null
-                );
+                // 4. Refund the Energy! 
+                // We cast this.Amount to an (int) just in case the engine is strict about whole numbers here.
+                await PlayerCmd.GainEnergy((int)this.Amount, this.Owner.Player);
 
-                // 5. Reset the counter so they can trigger it again in the same turn!
+                // 5. Reset the counter!
                 this._keybladeCounter = 0; 
             }
         }
@@ -49,7 +42,7 @@ public class KeybladeMasteryPower : SoraModPower
         await base.AfterCardPlayed(context, cardPlay);
     }
 
-    // Reset the counter at the start of a new turn to prevent carrying over half-finished combos
+    // Clear the counter at the start of a new turn
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext context, Player player)
     {
         if (player == this.Owner.Player)

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Enums;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Common.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class FlashStepSoraMod() : SoraKeybladeCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

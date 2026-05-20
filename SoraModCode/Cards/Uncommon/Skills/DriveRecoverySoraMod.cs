@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Skills;
 
 public class DriveRecoverySoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {

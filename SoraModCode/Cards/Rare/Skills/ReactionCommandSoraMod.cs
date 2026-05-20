@@ -5,9 +5,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Rare;
 
-namespace SoraMod.SoraModCode.Cards.Rare;
+namespace SoraMod.SoraModCode.Cards.Rare.Skills;
 
 [Pool(typeof(SoraModCardPool))]
 public class ReactionCommandSoraMod() : SoraModCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)

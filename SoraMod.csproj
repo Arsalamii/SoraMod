@@ -60,6 +60,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="SoraModCode\Cards\Rare\Powers\" />
         <Folder Include="SoraMod\images\card_portraits\big\"/>
         <Folder Include="SoraMod\images\powers\big\"/>
         <Folder Include="SoraMod\images\relics\big\"/>

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Rare;
 
 // Assuming SoraModPower is your base custom power class!
 public class ReactionCommandPower : SoraModPower 

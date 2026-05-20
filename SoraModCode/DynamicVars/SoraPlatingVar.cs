@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
 // Make sure you have your using statement for WisdomFormPower here!
 

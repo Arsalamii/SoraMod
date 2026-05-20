@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using SoraMod.SoraModCode.Character;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace SoraMod.SoraModCode.Cards.Rare;
+namespace SoraMod.SoraModCode.Cards.Rare.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class RagnarokSoraMod() : SoraKeybladeCard(0, CardType.Attack, CardRarity.Rare, TargetType.RandomEnemy) 

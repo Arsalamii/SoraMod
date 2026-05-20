@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Common;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Common.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class StrikeRaidSoraMod() : SoraKeybladeCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

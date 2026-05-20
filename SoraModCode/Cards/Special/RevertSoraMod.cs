@@ -1,8 +1,6 @@
-﻿using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
+﻿using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using SoraMod.SoraModCode.Powers;
-using System.Linq;
+using SoraMod.SoraModCode.Powers.Forms;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 

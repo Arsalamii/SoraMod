@@ -10,9 +10,9 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Skills;
 
 [Pool(typeof(SoraModCardPool))]
 public class AeroSoraMod : SoraMagicCard

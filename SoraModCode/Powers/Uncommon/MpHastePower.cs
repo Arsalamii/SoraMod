@@ -5,7 +5,7 @@ using SoraMod.SoraModCode.Enums;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Uncommon;
 
 public class MPHastePower : SoraModPower
 {

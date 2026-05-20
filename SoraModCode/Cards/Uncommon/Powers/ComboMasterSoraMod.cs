@@ -1,11 +1,11 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Uncommon;
 using BaseLib.Utils;
 using SoraMod.SoraModCode.Character;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Powers;
 
 [Pool(typeof(SoraModCardPool))]
 public class ComboMasterSoraMod : SoraModCard 

@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Common.Skills;
 
 [Pool(typeof(SoraModCardPool))]
 public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)

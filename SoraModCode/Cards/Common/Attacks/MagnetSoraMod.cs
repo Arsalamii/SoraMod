@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Powers;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Common.Attacks;
 
 public class MagnetSoraMod : SoraMagicCard
 {

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class TensionRisingSoraMod() : SoraModCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

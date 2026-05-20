@@ -3,14 +3,13 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Uncommon;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Powers;
 
 [Pool(typeof(SoraModCardPool))]
 public class MpHasteSoraMod : SoraModCard
 {
-    // Constructor: Base Cost 1, Power Type. (Adjust CardRarity to your liking!)
     public MpHasteSoraMod() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
     }

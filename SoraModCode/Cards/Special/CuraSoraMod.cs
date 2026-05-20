@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.DynamicVars;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 

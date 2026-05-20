@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using BaseLib.Hooks;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Forms;
 
 // 1. We attach the IHealAmountModifier interface to our power
   

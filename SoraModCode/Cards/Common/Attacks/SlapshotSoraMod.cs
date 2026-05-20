@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Enums;
 
-namespace SoraMod.SoraModCode.Cards.Common;
+namespace SoraMod.SoraModCode.Cards.Common.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class SlapshotSoraMod() : SoraKeybladeCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

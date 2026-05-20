@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 
-namespace SoraMod.SoraModCode.Cards.Rare;
+namespace SoraMod.SoraModCode.Cards.Rare.Attacks;
 
 [Pool(typeof(SoraModCardPool))]
 public class TrinityLimitSoraMod() : SoraKeybladeCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)

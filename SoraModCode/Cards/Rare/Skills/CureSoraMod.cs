@@ -8,9 +8,9 @@ using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.DynamicVars;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
-namespace SoraMod.SoraModCode.Cards.Rare;
+namespace SoraMod.SoraModCode.Cards.Rare.Skills;
 
 [Pool(typeof(SoraModCardPool))]
 public class CureSoraMod : SoraMagicCard

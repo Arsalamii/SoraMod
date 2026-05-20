@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Combat;
 using SoraMod.SoraModCode.Cards.Special;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
 
 namespace SoraMod.SoraModCode.Relics;
 

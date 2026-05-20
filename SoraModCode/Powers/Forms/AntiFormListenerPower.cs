@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using SoraMod.SoraModCode.Enums;
 using SoraMod.SoraModCode.Relics;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Forms;
 
 public class AntiFormListenerPower : SoraModPower
 {
