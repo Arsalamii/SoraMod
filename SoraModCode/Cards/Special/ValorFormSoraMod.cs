@@ -60,8 +60,5 @@ public class ValorFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Toke
         );
     }
 
-    protected override void OnUpgrade()
-    {
-        // Add upgrade logic if needed!
-    }
+    public override int MaxUpgradeLevel => 0;
 }

@@ -93,4 +93,6 @@ public class FiraSoraMod : SoraMagicCard
             await CardCmd.TransformTo<FiragaSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

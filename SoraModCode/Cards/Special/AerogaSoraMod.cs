@@ -51,4 +51,6 @@ public class AerogaSoraMod : SoraMagicCard
             this
         );
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

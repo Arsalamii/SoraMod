@@ -31,5 +31,11 @@
   "SORAMOD-STRIKE_RAID_POWER.title": "StrikeRaidPower",
   "SORAMOD-UPPER_SLASH_POWER.description": "",
   "SORAMOD-UPPER_SLASH_POWER.smartDescription": "",
-  "SORAMOD-UPPER_SLASH_POWER.title": "UpperSlashPower"
+  "SORAMOD-UPPER_SLASH_POWER.title": "UpperSlashPower",
+  "SORAMOD-RETALIATE_POWER.description": "",
+  "SORAMOD-RETALIATE_POWER.smartDescription": "",
+  "SORAMOD-RETALIATE_POWER.title": "RetaliatePower",
+  "SORAMOD-ETHER_POWER.description": "",
+  "SORAMOD-ETHER_POWER.smartDescription": "",
+  "SORAMOD-ETHER_POWER.title": "EtherPower"
 }

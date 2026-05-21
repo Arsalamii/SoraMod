@@ -82,4 +82,6 @@ public class CureSoraMod : SoraMagicCard
             }
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

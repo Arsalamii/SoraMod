@@ -50,4 +50,6 @@ public class BlizzagaSoraMod : SoraMagicCard
             this
         );
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

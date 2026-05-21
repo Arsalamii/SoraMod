@@ -115,4 +115,6 @@ public class MagneraSoraMod : SoraMagicCard
             await CardCmd.TransformTo<MagnegaSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

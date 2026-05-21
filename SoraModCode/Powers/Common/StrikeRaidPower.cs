@@ -13,9 +13,6 @@ public class StrikeRaidPower : SoraModPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    
-    // We make it invisible so the player doesn't need to see a buff icon
-    // for an effect that happens automatically!
     protected override bool IsVisibleInternal => false; 
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)

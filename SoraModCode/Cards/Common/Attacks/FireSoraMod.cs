@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,9 +6,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Cards.Special;
+using SoraMod.SoraModCode.Character;
 
 namespace SoraMod.SoraModCode.Cards.Common.Attacks;
 
+[Pool(typeof(SoraModCardPool))]
 public class FireSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 3;
@@ -101,4 +103,6 @@ public class FireSoraMod : SoraMagicCard
             }
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

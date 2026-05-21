@@ -27,4 +27,5 @@ public class RevertSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Token, 
         }
     }
     
+    public override int MaxUpgradeLevel => 0;
 }

@@ -4,59 +4,55 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
 
 namespace SoraMod.SoraModCode.Cards.Common.Skills;
 
 [Pool(typeof(SoraModCardPool))]
-public class DodgeRollSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class SynthesisSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags
-    {
-        get => new HashSet<CardTag> { CardTag.Defend };
-    }
-    
-    // 1. SET BASE STATS: 7 Block
+    // 1. SET BASE STATS: 2 Draw
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
         get => new List<DynamicVar> 
         { 
-            new BlockVar(7m, ValueProp.Move) 
+            new DynamicVar("Draw", 2m) 
         };
     }
-    
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        DodgeRollSoraMod card = this;
+        SynthesisSoraMod card = this;
         
-        // 2. GAIN BLOCK
-        await CommonActions.CardBlock(card, cardPlay);
+        // 2. PLAY ANIMATION
+        await CreatureCmd.TriggerAnim(card.Owner.Creature, "Cast", card.Owner.Character.CastAnimDelay);
 
-        // 3. DRAW 1 CARD
-        await CardPileCmd.Draw(choiceContext, 1, card.Owner.Creature.Player);
-
-        // 4. PROMPT THE PLAYER TO DISCARD 1 CARD
+        // 3. PROMPT THE PLAYER TO DISCARD
         var selectedCards = await CardSelectCmd.FromHandForDiscard(
             choiceContext, 
-            card.Owner, 
+            card.Owner, // Acrobatics uses 'Owner' directly here for the UI prompt
             new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), 
             null, 
             card
         );
 
+        // Grab the single card the player clicked
         var cardToDiscard = selectedCards.FirstOrDefault();
 
-        // 5. ACTUALLY DISCARD IT
+        // 4. ACTUALLY DISCARD IT
         if (cardToDiscard != null)
         {
             await CardCmd.Discard(choiceContext, cardToDiscard);
         }
+
+        // 5. DRAW CARDS
+        int drawAmount = (int)card.DynamicVars["Draw"].BaseValue;
+        await CardPileCmd.Draw(choiceContext, drawAmount, card.Owner.Creature.Player);
     }
-    
-    // 6. UPGRADE: +3 Block
+
+    // 6. UPGRADE: +1 Draw
     protected override void OnUpgrade() 
     {
-        this.DynamicVars.Block.UpgradeValueBy(3m);
+        this.DynamicVars["Draw"].UpgradeValueBy(1m);
     }
 }

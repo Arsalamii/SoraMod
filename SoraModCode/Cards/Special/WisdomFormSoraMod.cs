@@ -65,4 +65,6 @@ public class WisdomFormSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Tok
     {
         // Add upgrade logic if needed!
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

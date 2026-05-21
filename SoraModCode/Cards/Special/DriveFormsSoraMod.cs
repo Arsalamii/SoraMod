@@ -45,4 +45,6 @@ public class DriveFormsSoraMod() : SoraModCard(0, CardType.Skill, CardRarity.Tok
             await CardCmd.AutoPlay(choiceContext, selectedCard, this.Owner.Creature);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

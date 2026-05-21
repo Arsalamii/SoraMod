@@ -89,4 +89,6 @@ public class BlizzaraSoraMod : SoraMagicCard
             await CardCmd.TransformTo<BlizzagaSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

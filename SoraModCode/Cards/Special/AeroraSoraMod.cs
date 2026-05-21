@@ -95,4 +95,6 @@ public class AeroraSoraMod : SoraMagicCard
             await CardCmd.TransformTo<AeroraSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

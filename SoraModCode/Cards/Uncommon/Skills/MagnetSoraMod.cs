@@ -1,14 +1,17 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using SoraMod.SoraModCode.Cards.Special;
+using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers;
 
 namespace SoraMod.SoraModCode.Cards.Uncommon.Skills;
 
+[Pool(typeof(SoraModCardPool))]
 public class MagnetSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 3;
@@ -91,8 +94,7 @@ public class MagnetSoraMod : SoraMagicCard
             }
         }
     }
-
-// ... (Keep your standard EvolveIntoMagnera manual swap logic here!) ...
+    
     public async Task EvolveIntoMagnera(SoraMagicCard masterDeckCard)
     {
         // Because the Tracker Power will trigger the evolution, this method needs to be public!
@@ -118,4 +120,6 @@ public class MagnetSoraMod : SoraMagicCard
             await CardCmd.TransformTo<MagneraSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

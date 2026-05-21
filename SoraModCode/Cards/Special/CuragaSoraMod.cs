@@ -28,4 +28,6 @@ public class CuragaSoraMod : SoraMagicCard
         // 1. Heal Sora! No EXP tracking needed for the final form.
         await CreatureCmd.Heal(this.Owner.Creature, this.DynamicVars.Heal.BaseValue);
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

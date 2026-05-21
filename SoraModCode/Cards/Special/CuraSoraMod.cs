@@ -86,4 +86,6 @@ public class CuraSoraMod : SoraMagicCard
             await CardCmd.TransformTo<CuragaSoraMod>(this);
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

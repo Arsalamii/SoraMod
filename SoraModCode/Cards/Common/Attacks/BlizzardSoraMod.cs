@@ -96,4 +96,6 @@ public class BlizzardSoraMod : SoraMagicCard
             }
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }

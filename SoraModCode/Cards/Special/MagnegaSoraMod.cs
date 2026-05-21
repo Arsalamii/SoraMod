@@ -51,4 +51,6 @@ public class MagnegaSoraMod : SoraMagicCard
             }
         }
     }
+    
+    public override int MaxUpgradeLevel => 0;
 }
