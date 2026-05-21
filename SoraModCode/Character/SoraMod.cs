@@ -5,13 +5,14 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using SoraMod.SoraModCode.Cards.Basic;
 using SoraMod.SoraModCode.Cards.Common.Attacks;
+using SoraMod.SoraModCode.Cards.Common.Skills;
 using SoraMod.SoraModCode.Cards.Rare.Skills;
 using SoraMod.SoraModCode.Extensions;
 using SoraMod.SoraModCode.Relics;
 
 namespace SoraMod.SoraModCode.Character;
 
-public abstract class SoraMod : PlaceholderCharacterModel
+public class SoraMod : PlaceholderCharacterModel
 {
     public const string CharacterId = "SoraMod";
     
@@ -26,14 +27,14 @@ public abstract class SoraMod : PlaceholderCharacterModel
     [
         ModelDb.Card<StrikeSoraMod>(),
         ModelDb.Card<StrikeSoraMod>(),
-        ModelDb.Card<SlapshotSoraMod>(),
-        ModelDb.Card<SlapshotSoraMod>(),
-        ModelDb.Card<StrikeRaidSoraMod>(),
-        ModelDb.Card<StrikeRaidSoraMod>(),
-        ModelDb.Card<StrikeRaidSoraMod>(),
-        ModelDb.Card<FireSoraMod>(),
-        ModelDb.Card<CureSoraMod>(),
-        ModelDb.Card<FireSoraMod>(),
+        ModelDb.Card<FocusSoraMod>(),
+        ModelDb.Card<AerialSweepSoraMod>(),
+        ModelDb.Card<SlidingDashSoraMod>(),
+        ModelDb.Card<SlidingDashSoraMod>(),
+        ModelDb.Card<VortexSoraMod>(),
+        ModelDb.Card<VortexSoraMod>(),
+        ModelDb.Card<BlizzardSoraMod>(),
+        ModelDb.Card<BlizzardSoraMod>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

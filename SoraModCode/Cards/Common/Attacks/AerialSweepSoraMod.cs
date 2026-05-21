@@ -33,7 +33,6 @@ public class AerialSweepSoraMod() : SoraKeybladeCard(1, CardType.Attack, CardRar
         AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue)
             .FromCard((CardModel) card)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt_light")
             .Execute(choiceContext);
 
         // 3. CHECK IF THE ENEMY INTENDS TO ATTACK

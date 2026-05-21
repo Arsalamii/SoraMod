@@ -31,7 +31,6 @@ public class SlapshotSoraMod() : SoraKeybladeCard(0, CardType.Attack, CardRarity
         AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue)
             .FromCard((CardModel) card)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
         // CHECK COMBAT HISTORY

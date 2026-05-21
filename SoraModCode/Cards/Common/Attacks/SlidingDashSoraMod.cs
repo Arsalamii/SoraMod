@@ -32,7 +32,6 @@ public class SlidingDashSoraMod() : SoraKeybladeCard(0, CardType.Attack, CardRar
         AttackCommand attackCommand = await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue)
             .FromCard((CardModel) card)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash_fast") 
             .Execute(choiceContext);
 
         // 3. CHECK IF THIS IS THE FIRST CARD PLAYED
