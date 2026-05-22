@@ -3,40 +3,39 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using SoraMod.SoraModCode.Enums;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using SoraMod.SoraModCode.Cards;
 
 namespace SoraMod.SoraModCode.Powers.Uncommon;
 
-public class EtherPower : SoraModPower
+public class FlashStepPower : SoraModPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    protected override bool IsVisibleInternal => false; 
 
     // 1. UPDATE COSTS WHEN APPLIED OR DRAWN
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        UpdateMagicCosts();
+        UpdateKeybladeCosts();
     }
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        UpdateMagicCosts();
+        UpdateKeybladeCosts();
         return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }
 
-    // 2. CONSUME A STACK WHEN A MAGIC CARD IS PLAYED
+    // 2. CONSUME A STACK WHEN A KEYBLADE IS PLAYED
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card is SoraMagicCard)
+        if (cardPlay.Card.Tags.Contains(SoraModEnums.Keyblade))
         {
-            // Safely reduce the amount by 1!
+            // Safely reduce the stack!
             this.SetAmount(this.Amount - 1);
             
             if (this.Amount <= 0)
             {
-                ResetMagicCosts();
+                ResetKeybladeCosts();
                 this.RemoveInternal();
             }
         }
@@ -44,12 +43,12 @@ public class EtherPower : SoraModPower
         await base.AfterCardPlayed(context, cardPlay);
     }
 
-    // 3. EXPIRE AT END OF TURN
+    // 3. EXPIRE AT THE END OF THE TURN
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side == this.Owner.Side)
         {
-            ResetMagicCosts();
+            ResetKeybladeCosts();
             this.RemoveInternal();
         }
         await base.AfterTurnEnd(choiceContext, side);
@@ -57,26 +56,27 @@ public class EtherPower : SoraModPower
 
     public override async Task AfterRemoved(Creature oldOwner)
     {
-        ResetMagicCosts();
+        ResetKeybladeCosts();
     }
-    
-    private void UpdateMagicCosts()
+
+    // --- VISUAL HELPERS ---
+    private void UpdateKeybladeCosts()
     {
         CardPile hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
         if (hand == null) return;
 
-        foreach (CardModel card in hand.Cards.Where(c => c is SoraMagicCard))
+        foreach (CardModel card in hand.Cards.Where(c => c.Tags.Contains(SoraModEnums.Keyblade)))
         {
             card.EnergyCost.SetThisTurnOrUntilPlayed(0);
         }
     }
 
-    private void ResetMagicCosts()
+    private void ResetKeybladeCosts()
     {
         CardPile hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
         if (hand == null) return;
 
-        foreach (CardModel card in hand.Cards.Where(c => c is SoraMagicCard))
+        foreach (CardModel card in hand.Cards.Where(c => c.Tags.Contains(SoraModEnums.Keyblade)))
         {
             card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
         }

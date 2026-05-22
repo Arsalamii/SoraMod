@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Enums;
+using SoraMod.SoraModCode.Synergy;
 
 namespace SoraMod.SoraModCode.Powers.Forms;
 
@@ -20,17 +21,24 @@ public class ValorFormPower : SoraModPower
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         UpdateFirstKeybladeCost();
+        TriggerAllFormSynergies(); // INTERFACE TRIGGER
     }
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
         UpdateFirstKeybladeCost();
+        
+        // INTERFACE TRIGGER
+        if (card is IDriveFormSynergy synergyCard)
+        {
+            synergyCard.ApplyDriveSynergy();
+        }
+        
         return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        // Changed to look for the Keyblade tag!
         if (cardPlay.Card.Tags.Contains(SoraModEnums.Keyblade))
         {
             ResetKeybladeCosts();
@@ -38,6 +46,27 @@ public class ValorFormPower : SoraModPower
         return base.AfterCardPlayed(context, cardPlay);
     }
 
+    public override async Task AfterRemoved(Creature oldOwner)
+    {
+        RemoveAllFormSynergies(); // INTERFACE TRIGGER
+        
+        if (oldOwner.Player?.PlayerCombatState != null)
+        {
+            CardPile hand = oldOwner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
+            if (hand != null)
+            {
+                foreach (CardModel card in hand.Cards)
+                {
+                    if (card.Tags.Contains(SoraModEnums.Keyblade))
+                    {
+                        card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
+                    }
+                }
+            }
+        }
+    }
+
+    // --- YOUR EXISTING KEYBLADE LOGIC ---
     private void UpdateFirstKeybladeCost()
     {
         if (HasPlayedKeybladeThisTurn) return;
@@ -47,10 +76,8 @@ public class ValorFormPower : SoraModPower
 
         foreach (CardModel card in hand.Cards)
         {
-            // Changed to look for the Keyblade tag!
             if (card.Tags.Contains(SoraModEnums.Keyblade))
             {
-                // Hardcoded to 0 cost!
                 card.EnergyCost.SetThisTurnOrUntilPlayed(0);
             }
         }
@@ -63,7 +90,6 @@ public class ValorFormPower : SoraModPower
 
         foreach (CardModel card in hand.Cards)
         {
-            // Changed to look for the Keyblade tag!
             if (card.Tags.Contains(SoraModEnums.Keyblade))
             {
                 card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
@@ -71,34 +97,24 @@ public class ValorFormPower : SoraModPower
         }
     }
 
-    public override decimal ModifyDamageAdditive(
-        Creature? target,
-        decimal amount,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource)
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (dealer == this.Owner && cardSource != null && cardSource.Tags.Contains(SoraModEnums.Keyblade))
         {
-            // We recount the history right here, but add a strict rule to IGNORE the cardSource!
             int previousKeyblades = CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Count(e =>
                 e.HappenedThisTurn(this.CombatState) && 
                 e.CardPlay.Card.Owner.Creature == this.Owner && 
                 e.CardPlay.Card.Tags.Contains(SoraModEnums.Keyblade) &&
-                e.CardPlay.Card != cardSource); // <--- THE MAGIC FIX!
+                e.CardPlay.Card != cardSource); 
 
             return previousKeyblades * 2m; 
         }
-        
         return 0m;
     }
     
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != this.Owner.Side)
-        {
-            return;
-        }
+        if (side != this.Owner.Side) return;
         
         if (this.Owner.Player.PlayerCombatState.Stars > 0)
         {
@@ -118,37 +134,33 @@ public class ValorFormPower : SoraModPower
         }
     }
 
-    // NEW PROPERTY: Physically tallies up your combo for the turn
-    private int KeybladesPlayedThisTurn
+    private int KeybladesPlayedThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Count(e =>
+        e.HappenedThisTurn(this.CombatState) && 
+        e.CardPlay.Card.Owner.Creature == this.Owner && 
+        e.CardPlay.Card.Tags.Contains(SoraModEnums.Keyblade));
+    
+    private bool HasPlayedKeybladeThisTurn => KeybladesPlayedThisTurn > 0;
+
+    // --- NEW INTERFACE HELPERS ---
+    private void TriggerAllFormSynergies()
     {
-        get
+        var hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
+        if (hand == null) return;
+
+        foreach (var card in hand.Cards.OfType<IDriveFormSynergy>())
         {
-            return CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().Count(e =>
-                e.HappenedThisTurn(this.CombatState) && 
-                e.CardPlay.Card.Owner.Creature == this.Owner && 
-                e.CardPlay.Card.Tags.Contains(SoraModEnums.Keyblade));
+            card.ApplyDriveSynergy();
         }
     }
-    
-    // NEW PROPERTY: A simple true/false check using our combo tally
-    private bool HasPlayedKeybladeThisTurn => KeybladesPlayedThisTurn > 0;
-    
-    public override async Task AfterRemoved(Creature oldOwner)
+
+    private void RemoveAllFormSynergies()
     {
-        if (oldOwner.Player?.PlayerCombatState != null)
+        var hand = this.Owner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
+        if (hand == null) return;
+
+        foreach (var card in hand.Cards.OfType<IDriveFormSynergy>())
         {
-            CardPile hand = oldOwner.Player.Piles.FirstOrDefault(p => p.Type == PileType.Hand);
-            if (hand != null)
-            {
-                foreach (CardModel card in hand.Cards)
-                {
-                    // Changed to look for the Keyblade tag!
-                    if (card.Tags.Contains(SoraModEnums.Keyblade))
-                    {
-                        card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical);
-                    }
-                }
-            }
+            card.RemoveDriveSynergy();
         }
     }
 }

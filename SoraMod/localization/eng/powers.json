@@ -37,5 +37,8 @@
   "SORAMOD-RETALIATE_POWER.title": "RetaliatePower",
   "SORAMOD-ETHER_POWER.description": "",
   "SORAMOD-ETHER_POWER.smartDescription": "",
-  "SORAMOD-ETHER_POWER.title": "EtherPower"
+  "SORAMOD-ETHER_POWER.title": "EtherPower",
+  "SORAMOD-FLASH_STEP_POWER.description": "",
+  "SORAMOD-FLASH_STEP_POWER.smartDescription": "",
+  "SORAMOD-FLASH_STEP_POWER.title": "FlashStepPower"
 }

@@ -50,7 +50,7 @@ public class RetaliateSoraMod() : SoraModCard(1, CardType.Skill, CardRarity.Basi
         );
     }
     
-    // 5. UPGRADE: +3 Block (to 8) and +2 Power (to 6)
+    // 5. UPGRADE: +3 Block and +2 Power
     protected override void OnUpgrade() 
     {
         this.DynamicVars.Block.UpgradeValueBy(3m);
