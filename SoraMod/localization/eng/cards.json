@@ -14,7 +14,7 @@
   "SORAMOD-UPPER_SLASH_SORA_MOD.title": "Upper Slash",
   "SORAMOD-TENSION_RISING_SORA_MOD.description": "Damage is equal to your Drive.\nGain {Stars:diff()} Drive.",
   "SORAMOD-TENSION_RISING_SORA_MOD.title": "Tension Rising",
-  "SORAMOD-FLASH_STEP_SORA_MOD.description": "Deal {Damage:diff()} Damage.\nGain {Block:diff()} [gold]Block[/gold]",
+  "SORAMOD-FLASH_STEP_SORA_MOD.description": "Deal {Damage:diff()} damage. The next Keyblade card you play this turn costs 0.",
   "SORAMOD-FLASH_STEP_SORA_MOD.title": "Flash Step",
   "SORAMOD-SLAPSHOT_SORA_MOD.description": "Deal {Damage:diff()} Damage. If the last card you played was a [gold]Keyblade[/gold] card, draw 1 card.",
   "SORAMOD-SLAPSHOT_SORA_MOD.title": "Slapshot",
