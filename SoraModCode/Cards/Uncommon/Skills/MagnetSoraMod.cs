@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,7 +8,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.Powers;
+using SoraMod.SoraModCode.Powers.Forms;
+using SoraMod.SoraModCode.Powers.Uncommon;
 
 namespace SoraMod.SoraModCode.Cards.Uncommon.Skills;
 
@@ -20,7 +22,6 @@ public class MagnetSoraMod : SoraMagicCard
     {
     }
 
-    // 1. Declare the native Vulnerable variable!
     protected override IEnumerable<DynamicVar> CanonicalVars => new List<DynamicVar>
     {
         new PowerVar<VulnerablePower>(1)
@@ -31,20 +32,26 @@ public class MagnetSoraMod : SoraMagicCard
         await CreatureCmd.TriggerAnim(this.Owner.Creature, "Cast", this.Owner.Character.CastAnimDelay);
 
         var masterDeck = PileType.Deck.GetPile(this.Owner);
-        
-        // THE FIX: Now we securely match the combat card's serial number to the Master Deck's serial number!
         CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => 
             c is SoraMagicCard smc && smc.MagicSerialNumber == this.MagicSerialNumber
         );
+
+        // --- THE WISDOM FORM FIX ---
+        // Calculate the final Vulnerable amount dynamically before the loop
+        decimal finalVulnerable = this.DynamicVars.Vulnerable.BaseValue;
+        if (this.Owner.HasPower<WisdomFormPower>())
+        {
+            finalVulnerable += 1; // Adds +1 Vulnerable. Feel free to change to 2 if you want it stronger!
+        }
 
         foreach (var monster in this.CombatState.Enemies)
         {
             if (monster != null && !monster.IsDead)
             {
-                // 1. Apply Vulnerable
+                // 1. Apply Vulnerable using our dynamically calculated amount
                 await PowerCmd.Apply<VulnerablePower>(
                     monster,
-                    this.DynamicVars.Vulnerable.BaseValue,
+                    finalVulnerable,
                     this.Owner.Creature,
                     this
                 );
@@ -52,10 +59,8 @@ public class MagnetSoraMod : SoraMagicCard
                 // 2. The Callback Logic
                 if (trueMasterCard is SoraMagicCard magicMasterCard)
                 {
-                    // We pack the EXP and Evolution logic into a variable
                     Func<Task> onDeathAction = async () =>
                     {
-                        // Safety check: Only gain EXP/Evolve if it hasn't already evolved!
                         if (magicMasterCard.Experience < EvolutionRequirement)
                         {
                             magicMasterCard.Experience += 1;
@@ -67,7 +72,6 @@ public class MagnetSoraMod : SoraMagicCard
                         }
                     };
 
-                    // Look for an existing tracker on this specific enemy
                     var existingTracker = monster.GetPower<AssistTrackerPower>();
 
                     if (existingTracker != null)
@@ -76,7 +80,6 @@ public class MagnetSoraMod : SoraMagicCard
                     }
                     else
                     {
-                        // 1. Catch the newly created tracker in a variable
                         var newTracker = await PowerCmd.Apply<AssistTrackerPower>(
                             monster,
                             1m,
@@ -84,7 +87,6 @@ public class MagnetSoraMod : SoraMagicCard
                             this
                         );
 
-                        // 2. Hand it the suitcase!
                         if (newTracker != null)
                         {
                             newTracker.AddCallback(onDeathAction);
@@ -97,7 +99,6 @@ public class MagnetSoraMod : SoraMagicCard
     
     public async Task EvolveIntoMagnera(SoraMagicCard masterDeckCard)
     {
-        // Because the Tracker Power will trigger the evolution, this method needs to be public!
         var newMagnera = this.CardScope.CreateCard<MagneraSoraMod>(this.Owner);
         if (this.IsUpgraded)
         {

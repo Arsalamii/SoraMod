@@ -18,7 +18,7 @@ public class AeroraSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 3;
 
-    public AeroraSoraMod() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public AeroraSoraMod() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
@@ -42,7 +42,7 @@ public class AeroraSoraMod : SoraMagicCard
         decimal finalPlating = 6; // Base value
         if (this.Owner.HasPower<WisdomFormPower>())
         {
-            finalPlating += 4; // Wisdom form bonus
+            finalPlating += 2; // Wisdom form bonus
         }
 
         // Apply the calculated Plating

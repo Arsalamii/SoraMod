@@ -40,5 +40,8 @@
   "SORAMOD-ETHER_POWER.title": "EtherPower",
   "SORAMOD-FLASH_STEP_POWER.description": "",
   "SORAMOD-FLASH_STEP_POWER.smartDescription": "",
-  "SORAMOD-FLASH_STEP_POWER.title": "FlashStepPower"
+  "SORAMOD-FLASH_STEP_POWER.title": "FlashStepPower",
+  "REFLECT_POWER.description": "",
+  "REFLECT_POWER.smartDescription": "",
+  "REFLECT_POWER.title": "ReflectPower"
 }

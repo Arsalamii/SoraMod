@@ -12,14 +12,14 @@ using SoraMod.SoraModCode.Cards.Special;
 using SoraMod.SoraModCode.Character;
 using SoraMod.SoraModCode.Powers.Forms;
 
-namespace SoraMod.SoraModCode.Cards.Uncommon.Skills;
+namespace SoraMod.SoraModCode.Cards.Uncommon.Powers;
 
 [Pool(typeof(SoraModCardPool))]
 public class AeroSoraMod : SoraMagicCard
 {
     private const int EvolutionRequirement = 3;
 
-    public AeroSoraMod() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public AeroSoraMod() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
@@ -37,7 +37,7 @@ public class AeroSoraMod : SoraMagicCard
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(this.Owner.Creature, "skill", this.Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(this.Owner.Creature, "power", this.Owner.Character.CastAnimDelay);
 
         // 3. We bypass the engine error by just doing the math securely right here!
         decimal finalPlating = 3; // Base value

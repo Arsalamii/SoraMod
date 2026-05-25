@@ -1,46 +1,42 @@
-﻿using BaseLib.Extensions;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 using SoraMod.SoraModCode.Character;
-using SoraMod.SoraModCode.DynamicVars;
-using SoraMod.SoraModCode.Powers.Forms;
+using SoraMod.SoraModCode.Powers.Uncommon;
 
 namespace SoraMod.SoraModCode.Cards.Special;
 
 [Pool(typeof(SoraEvolutionPool))]
-public class CuraSoraMod : SoraMagicCard
+public class RefleraSoraMod : SoraMagicCard
 {
-    private const int EvolutionRequirement = 3;
+    private const int EvolutionRequirement = 10;
 
-    public CuraSoraMod() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public RefleraSoraMod() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] { CardKeyword.Exhaust };
+    public override int MaxUpgradeLevel => 0;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new List<DynamicVar>
     {
-        new SoraHealVar(8) 
+        new BlockVar(16m, ValueProp.Move) // Upgraded to 16 Block
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int finalHealAmount = (int)this.DynamicVars.Heal.BaseValue;
+        await CreatureCmd.TriggerAnim(this.Owner.Creature, "Defend", this.Owner.Character.CastAnimDelay);
 
-        // Drive Form bonus
-        bool inDriveForm = this.Owner.HasPower<WisdomFormPower>();
-        if (inDriveForm)
-        {
-            finalHealAmount += 3; 
-        }
+        // 1. GAIN BLOCK
+        await CommonActions.CardBlock(this, cardPlay);
 
-        await CreatureCmd.Heal(this.Owner.Creature, finalHealAmount);
+        // 2. APPLY REFLECT POWER
+        await PowerCmd.Apply<ReflectPower>(this.Owner.Creature, 1m, this.Owner.Creature, this);
 
-        // THE FIX: Safe Master Deck lookup using MagicSerialNumber
+        // 3. EXP AND EVOLUTION LOGIC
         var masterDeck = PileType.Deck.GetPile(this.Owner);
         CardModel trueMasterCard = this.DeckVersion ?? masterDeck?.Cards.FirstOrDefault(c => 
             c is SoraMagicCard smc && smc.MagicSerialNumber == this.MagicSerialNumber
@@ -52,20 +48,15 @@ public class CuraSoraMod : SoraMagicCard
 
             if (magicMasterCard.Experience >= EvolutionRequirement)
             {
-                await this.EvolveIntoCuraga(magicMasterCard);
+                await this.EvolveIntoReflega(magicMasterCard);
             }
         }
     }
 
-    private async Task EvolveIntoCuraga(SoraMagicCard masterDeckCard)
+    private async Task EvolveIntoReflega(SoraMagicCard masterDeckCard)
     {
-        // THE FIX: Actually create Curaga instead of another Cura!
-        var newCuraga = this.CardScope.CreateCard<CuragaSoraMod>(this.Owner);
-        if (this.IsUpgraded)
-        {
-            newCuraga.UpgradeInternal();
-            newCuraga.FinalizeUpgradeInternal();
-        }
+        var newReflega = this.CardScope.CreateCard<ReflegaSoraMod>(this.Owner);
+        newReflega.Experience = masterDeckCard.Experience - EvolutionRequirement;
 
         if (masterDeckCard != null)
         {
@@ -73,15 +64,13 @@ public class CuraSoraMod : SoraMagicCard
             if (masterDeck != null && masterDeck.Cards.Contains(masterDeckCard))
             {
                 masterDeckCard.RemoveFromCurrentPile(); 
-                masterDeck.AddInternal(newCuraga); 
+                masterDeck.AddInternal(newReflega); 
             }
         }
 
         if (!MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsEnding)
         {
-            await CardCmd.TransformTo<CuragaSoraMod>(this);
+            await CardCmd.TransformTo<ReflegaSoraMod>(this);
         }
     }
-    
-    public override int MaxUpgradeLevel => 0;
 }

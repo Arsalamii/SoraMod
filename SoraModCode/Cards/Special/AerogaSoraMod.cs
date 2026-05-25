@@ -15,7 +15,7 @@ namespace SoraMod.SoraModCode.Cards.Special;
 [Pool(typeof(SoraEvolutionPool))] 
 public class AerogaSoraMod : SoraMagicCard
 {
-    public AerogaSoraMod() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public AerogaSoraMod() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
     }
 

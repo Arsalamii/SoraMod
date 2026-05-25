@@ -5,26 +5,25 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace SoraMod.SoraModCode.Powers;
+namespace SoraMod.SoraModCode.Powers.Uncommon;
 
 public class AssistTrackerPower : PowerModel
 {
-    // A list of actions to run when the enemy dies
-    private List<Func<Task>> _deathCallbacks;
+    // 1. THE NULL FIX: Initialize the list immediately upon creation!
+    private List<Func<Task>> _deathCallbacks = new List<Func<Task>>();
 
     public override PowerType Type => PowerType.Buff; 
     public override PowerStackType StackType => PowerStackType.None; 
     protected override bool IsVisibleInternal => false; 
 
-    // THE MEMORY LEAK FIX:
-    // This forces the engine to give every clone its own private list!
     protected override void AfterCloned()
     {
         base.AfterCloned();
-        this._deathCallbacks = new List<Func<Task>>();
+        // 2. THE CLONE FIX: We create a new list, but we COPY the existing callbacks into it!
+        // This stops memory leaks but preserves the logic for the game's intent prediction.
+        this._deathCallbacks = new List<Func<Task>>(this._deathCallbacks);
     }
 
-    // Add a packed suitcase of logic to this enemy
     public void AddCallback(Func<Task> callback)
     {
         if (callback != null)
@@ -35,12 +34,11 @@ public class AssistTrackerPower : PowerModel
 
     public override async Task AfterRemoved(Creature oldOwner)
     {
-        // 1. The Ultimate Fix: We just check if the enemy has 0 health!
-        // This prevents "Cleanse" moves from granting free EXP, while perfectly
-        // dodging the engine's delayed IsDead boolean.
         if (oldOwner.CurrentHp <= 0 && _deathCallbacks != null && _deathCallbacks.Count > 0)
         {
-            foreach (var callback in _deathCallbacks)
+            // 3. THE SAFE LOOP FIX: Appending .ToList() creates a temporary snapshot of the list 
+            // so we don't crash if the list changes mid-execution!
+            foreach (var callback in _deathCallbacks.ToList())
             {
                 await callback();
             }
@@ -51,7 +49,6 @@ public class AssistTrackerPower : PowerModel
     {
         await base.BeforeTurnEnd(choiceContext, side);
 
-        // Optional safety: Make sure it's actually the Player's turn ending!
         if (side == CombatSide.Player) 
         {
             _deathCallbacks?.Clear(); 
