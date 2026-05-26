@@ -41,7 +41,7 @@
   "SORAMOD-FLASH_STEP_POWER.description": "",
   "SORAMOD-FLASH_STEP_POWER.smartDescription": "",
   "SORAMOD-FLASH_STEP_POWER.title": "FlashStepPower",
-  "REFLECT_POWER.description": "",
-  "REFLECT_POWER.smartDescription": "",
-  "REFLECT_POWER.title": "ReflectPower"
+  "SORAMOD-SORA_REFLECT_POWER.description": "",
+  "SORAMOD-SORA_REFLECT_POWER.smartDescription": "",
+  "SORAMOD-SORA_REFLECT_POWER.title": "SoraReflectPower"
 }

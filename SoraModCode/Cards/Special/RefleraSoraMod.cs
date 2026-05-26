@@ -34,7 +34,7 @@ public class RefleraSoraMod : SoraMagicCard
         await CommonActions.CardBlock(this, cardPlay);
 
         // 2. APPLY REFLECT POWER
-        await PowerCmd.Apply<ReflectPower>(this.Owner.Creature, 1m, this.Owner.Creature, this);
+        await PowerCmd.Apply<SoraReflectPower>(this.Owner.Creature, 1m, this.Owner.Creature, this);
 
         // 3. EXP AND EVOLUTION LOGIC
         var masterDeck = PileType.Deck.GetPile(this.Owner);
