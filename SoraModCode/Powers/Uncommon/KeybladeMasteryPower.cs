@@ -18,6 +18,7 @@ public class KeybladeMasteryPower : SoraModPower
     // Using Accumulate means playing multiple Keyblade Masteries stacks the reward!
     // (e.g., 2 stacks = 2 Dex every 3 cards)
     public override PowerStackType StackType => PowerStackType.Counter; 
+    protected override bool IsVisibleInternal => false; 
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {

@@ -12,6 +12,7 @@ public class FlashStepPower : SoraModPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    protected override bool IsVisibleInternal => false; 
 
     // 1. UPDATE COSTS WHEN APPLIED OR DRAWN
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)

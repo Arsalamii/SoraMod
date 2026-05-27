@@ -13,6 +13,7 @@ public class MPHastePower : SoraModPower
     
     // Accumulate means if you play two MP Hastes, you gain 2 Energy!
     public override PowerStackType StackType => PowerStackType.Counter; 
+    protected override bool IsVisibleInternal => false; 
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext context, Player player)
     {

@@ -43,5 +43,17 @@
   "SORAMOD-FLASH_STEP_POWER.title": "FlashStepPower",
   "SORAMOD-SORA_REFLECT_POWER.description": "",
   "SORAMOD-SORA_REFLECT_POWER.smartDescription": "",
-  "SORAMOD-SORA_REFLECT_POWER.title": "SoraReflectPower"
+  "SORAMOD-SORA_REFLECT_POWER.title": "SoraReflectPower",
+  "SORAMOD-QUICK_RUN_POWER.description": "",
+  "SORAMOD-QUICK_RUN_POWER.smartDescription": "",
+  "SORAMOD-QUICK_RUN_POWER.title": "QuickRunPower",
+  "SORAMOD-AIRSTEP_RESTRICTION_POWER.description": "",
+  "SORAMOD-AIRSTEP_RESTRICTION_POWER.smartDescription": "",
+  "SORAMOD-AIRSTEP_RESTRICTION_POWER.title": "AirstepRestrictionPower",
+  "SORAMOD-REVERSAL_POWER.description": "",
+  "SORAMOD-REVERSAL_POWER.smartDescription": "",
+  "SORAMOD-REVERSAL_POWER.title": "ReversalPower",
+  "SORAMOD-MAGIC_LOCK_ON_POWER.description": "",
+  "SORAMOD-MAGIC_LOCK_ON_POWER.smartDescription": "",
+  "SORAMOD-MAGIC_LOCK_ON_POWER.title": "MagicLockOnPower"
 }
