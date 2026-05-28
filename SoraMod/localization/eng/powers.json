@@ -55,5 +55,14 @@
   "SORAMOD-REVERSAL_POWER.title": "ReversalPower",
   "SORAMOD-MAGIC_LOCK_ON_POWER.description": "",
   "SORAMOD-MAGIC_LOCK_ON_POWER.smartDescription": "",
-  "SORAMOD-MAGIC_LOCK_ON_POWER.title": "MagicLockOnPower"
+  "SORAMOD-MAGIC_LOCK_ON_POWER.title": "MagicLockOnPower",
+  "SORAMOD-BAMBI_POWER.description": "",
+  "SORAMOD-BAMBI_POWER.smartDescription": "",
+  "SORAMOD-BAMBI_POWER.title": "Bambi",
+  "SORAMOD-MUSHU_POWER.description": "",
+  "SORAMOD-MUSHU_POWER.smartDescription": "",
+  "SORAMOD-MUSHU_POWER.title": "Mushu",
+  "SORAMOD-MUSHU_UPGRADED_POWER.description": "",
+  "SORAMOD-MUSHU_UPGRADED_POWER.smartDescription": "",
+  "SORAMOD-MUSHU_UPGRADED_POWER.title": "Mushu"
 }

@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -58,16 +54,16 @@ public class SinkIntoDarknessSoraMod : SoraModCard
             int blockPerCard = (int)this.DynamicVars.Block.BaseValue;
             int totalBlock = blockPerCard * exhaustedCount;
 
-            // THE BLOCK FIX: If GainBlock throws a squiggle, type 'CreatureCmd.' and look for AddBlock!
-            await CreatureCmd.GainBlock(this.Owner.Creature, totalBlock, this.Owner.Creature, this);
+// THE BLOCK FIX: The engine expects the target, the decimal amount, the ValueProp enum, and the cardPlay context!
+            await CreatureCmd.GainBlock(this.Owner.Creature, (decimal)totalBlock, ValueProp.Move, cardPlay);
 
-            // --- DRIVE REWARD ---
+
+// --- DRIVE REWARD ---
             int starsPerCard = (int)this.DynamicVars["Stars"].BaseValue;
             int totalStars = starsPerCard * exhaustedCount;
 
-            // THE STARS FIX: Look at your "Focus" card to see exactly how you grant Stars!
-            // It will likely look exactly like this:
-            await PlayerCmd.GainStars((decimal)totalStars, this.Owner.Player);
+// THE STARS FIX: this.Owner is already the Player object!
+            await PlayerCmd.GainStars((decimal)totalStars, this.Owner);
         }
     }
 
